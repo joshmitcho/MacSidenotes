@@ -1,4 +1,7 @@
-This is a test. 
 
-Same time edits.
 
+Same Josh changed this line
+
+Josh is editing this line
+He added this text
+And this too
