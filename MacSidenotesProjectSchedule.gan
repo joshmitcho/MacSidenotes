@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="MacSidenotes" company="" webLink="https://gitlab.cas.mcmaster.ca/macsidenotes/macsidenotes/tree/master" view-date="2016-09-18" view-index="0" gantt-divider-location="354" resource-divider-location="300" version="2.8.1" locale="en_US">
+    <description><![CDATA[Chrome Extension for taking notes on any web site. Your notes are linked with the URL and will appear upon your next visit. Works offline using your browser's local storage.]]></description>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Name" width="186" order="0"/>
+        <field id="tpd4" name="Begin date" width="74" order="1"/>
+        <field id="tpd5" name="End date" width="73" order="2"/>
+        <option id="taskLabelLeft" value="name"/>
+        <option id="color.recent"><![CDATA[#00ff66 #00cccc #ffff33 #990099 #ff6600 #00cc66 #ff0066 #0000ff #3333ff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="209" order="0"/>
+        <field id="1" name="Default role" width="85" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="none">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="2" name="Problem Statement" color="#3333ff" meeting="false" start="2016-09-19" duration="4" complete="0" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="18" name="Problem Statement Due" color="#0000ff" meeting="true" start="2016-09-23" duration="0" complete="0" expand="true"/>
+        <task id="5" name="Development Plan" color="#ff0066" meeting="false" start="2016-09-26" duration="4" complete="0" expand="true">
+            <depend id="19" type="2" difference="0" hardness="Strong"/>
+            <task id="43" name="Learn LaTeX" color="#ff0066" meeting="false" start="2016-09-26" duration="1" complete="0" expand="true">
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="41" name="DevPlan Written Component" color="#ff0066" meeting="false" start="2016-09-27" duration="3" complete="0" expand="true"/>
+            <task id="0" name="Gantt Chart" color="#ff0066" meeting="false" start="2016-09-29" duration="1" complete="0" expand="true"/>
+        </task>
+        <task id="19" name="Development Plan Due" color="#ff0066" meeting="true" start="2016-09-30" duration="0" complete="0" expand="true"/>
+        <task id="7" name="ReqDoc Rev0" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true">
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+            <task id="54" name="Introduction" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="58" name="Functional Req" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="61" name="Non-Functional Req" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="63" name="Req Properties" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="69" name="Use Cases" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="71" name="Templates" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+            <task id="73" name="Suggestions" color="#00cc66" meeting="false" start="2016-10-01" duration="6" complete="0" expand="true"/>
+        </task>
+        <task id="21" name="ReqDoc Rev 0 Due" color="#00cc66" meeting="true" start="2016-10-07" duration="0" complete="0" expand="true"/>
+        <task id="13" name="Learn JS" color="#ff6600" meeting="false" start="2016-10-01" duration="4" complete="0" priority="2" expand="true">
+            <depend id="34" type="2" difference="0" hardness="Strong"/>
+            <task id="14" name="CodeAcademy JS" color="#ff6600" meeting="false" start="2016-10-01" duration="2" complete="0" expand="true">
+                <depend id="100" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="100" name="Google's Extension Overview" color="#ff6600" meeting="false" start="2016-10-03" duration="2" complete="0" expand="true"/>
+        </task>
+        <task id="34" name="Code POC Demo" color="#ff6600" meeting="false" start="2016-10-05" duration="11" complete="0" expand="true">
+            <task id="81" name="Clickable Button" color="#ff6600" meeting="false" start="2016-10-05" duration="3" complete="0" expand="true">
+                <depend id="87" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="87" name="Popup Note Window" color="#ff6600" meeting="false" start="2016-10-08" duration="3" complete="0" expand="true">
+                <depend id="91" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="91" name="Save Note Locally" color="#ff6600" meeting="false" start="2016-10-11" duration="5" complete="0" expand="true">
+                <depend id="23" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="23" name="Proof of Concept Demo" color="#ff6600" meeting="true" start="2016-10-16" duration="0" complete="0" expand="true"/>
+        <task id="103" name="V Model" color="#8cb6ce" meeting="false" start="2016-10-18" duration="2" complete="0" expand="true"/>
+        <task id="105" name="Test Documents" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="false">
+            <task id="119" name="Unit Testing" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="true"/>
+            <task id="121" name="System Tests" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="true"/>
+            <task id="108" name="Structural vs. Functional" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="true"/>
+            <task id="110" name="Dynamic vs Static" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="true"/>
+            <task id="117" name="Manual vs. Automatic" color="#8cb6ce" meeting="false" start="2016-10-20" duration="8" complete="0" expand="true"/>
+        </task>
+        <task id="25" name="Test Plan Rev 0 Due" color="#8cb6ce" meeting="true" start="2016-10-28" duration="0" complete="0" expand="true"/>
+        <task id="125" name="General Overview" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true">
+            <depend id="27" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="127" name="Module Guide" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true">
+            <depend id="27" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="129" name="MIS" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="false">
+            <depend id="27" type="2" difference="0" hardness="Strong"/>
+            <task id="134" name="Syntax" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true"/>
+            <task id="137" name="Semantics" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true"/>
+            <task id="139" name="Input and Output" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true"/>
+            <task id="141" name="State Variables" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true"/>
+            <task id="143" name="Environment Variables" color="#990099" meeting="false" start="2016-10-29" duration="14" complete="0" expand="true"/>
+        </task>
+        <task id="27" name="DesignDoc Rev 0 Due" color="#990099" meeting="true" start="2016-11-12" duration="0" complete="0" expand="true"/>
+        <task id="144" name="Open Master Note List" color="#ffff33" meeting="false" start="2016-10-16" duration="29" complete="0" expand="true"/>
+        <task id="149" name="Connect to Google Drive" color="#ffff33" meeting="false" start="2016-10-16" duration="29" complete="0" expand="true"/>
+        <task id="29" name="Rev0 Demo" color="#ffff33" meeting="true" start="2016-11-14" duration="0" complete="0" expand="true"/>
+        <task id="150" name="Make Necessary Changes" color="#00cccc" meeting="false" start="2016-11-14" duration="14" complete="0" expand="true"/>
+        <task id="31" name="Final Demo (Rev 1)" color="#00cccc" meeting="true" start="2016-11-28" duration="0" complete="0" expand="true"/>
+        <task id="33" name="FInal Doc Due" color="#00ff66" meeting="true" start="2016-12-08" duration="0" complete="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="3" name="Josh" function="Default:1" contacts="" phone=""/>
+        <resource id="4" name="Matt" function="SoftwareDevelopment:2" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="7" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="7" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
