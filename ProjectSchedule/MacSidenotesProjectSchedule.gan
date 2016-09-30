@@ -5,7 +5,7 @@
         <field id="tpd4" name="Begin date" width="74" order="1"/>
         <field id="tpd5" name="End date" width="73" order="2"/>
         <option id="taskLabelLeft" value="name"/>
-        <option id="color.recent"><![CDATA[#ffff33 #990099 #ff6600 #00cc66 #ff0066 #0000ff #3333ff]]></option>
+        <option id="color.recent"><![CDATA[#00ff66 #00cccc #ffff33 #990099 #ff6600 #00cc66 #ff0066 #0000ff #3333ff]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="209" order="0"/>
@@ -105,9 +105,9 @@
         <task id="144" name="Open Master Note List" color="#ffff33" meeting="false" start="2016-10-16" duration="29" complete="0" expand="true"/>
         <task id="149" name="Connect to Google Drive" color="#ffff33" meeting="false" start="2016-10-16" duration="29" complete="0" expand="true"/>
         <task id="29" name="Rev0 Demo" color="#ffff33" meeting="true" start="2016-11-14" duration="0" complete="0" expand="true"/>
-        <task id="150" name="Make Necessary Changes" color="#8cb6ce" meeting="false" start="2016-11-14" duration="14" complete="0" expand="true"/>
-        <task id="31" name="Final Demo (Rev 1)" color="#8cb6ce" meeting="true" start="2016-11-28" duration="0" complete="0" expand="true"/>
-        <task id="33" name="FInal Doc Due" color="#8cb6ce" meeting="true" start="2016-12-08" duration="0" complete="0" expand="true"/>
+        <task id="150" name="Make Necessary Changes" color="#00cccc" meeting="false" start="2016-11-14" duration="14" complete="0" expand="true"/>
+        <task id="31" name="Final Demo (Rev 1)" color="#00cccc" meeting="true" start="2016-11-28" duration="0" complete="0" expand="true"/>
+        <task id="33" name="FInal Doc Due" color="#00ff66" meeting="true" start="2016-12-08" duration="0" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="3" name="Josh" function="Default:1" contacts="" phone=""/>
