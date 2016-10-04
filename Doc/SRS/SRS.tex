@@ -3,6 +3,12 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\newcolumntype{C}{>{\centering\arraybackslash}m{5cm}}
+\newcolumntype{R}{>{\centering\arraybackslash}m{5cm}}
+
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -12,17 +18,16 @@
 }
 \usepackage[round]{natbib}
 
-\title{SE 3XA3: Development Plan\\Title of Project}
+\title{SE 3XA3: Requirements Document\\MacSidenotes}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Team 4
+		\\ Josh Mitchell mitchjp3
+		\\ Matthew Shortt shorttmk
 }
 
 \date{\today}
 
-\input{../Comments}
+%\input{../Comments}
 
 \begin{document}
 
@@ -38,8 +43,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Oct 6th & 1.0 & Completed before implementation\\
+%Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -79,7 +84,23 @@ User characteristics should go under assumptions.
 
 \subsubsection{The Context of the Work}
 
+	\includegraphics[width=\linewidth]{images/owl.jpg}
+	*Note: Replace owl with actual diagram
+
+
 \subsubsection{Work Partitioning}
+\begin{table}[bp]
+		\setlength{\extrarowheight}{1ex}
+	\caption {\bf Business Event List}
+	\begin{tabularx}{\textwidth}{L|C|R}
+		{\bf Event Name} & {\bf Input and Output} & {\bf Summary of BUC}\\
+		\hline
+		1. User clicks extension icon & Button click event (in) \newline Sidebar popup (out) & Extension sidebar pops out.\\
+		2. User types in sidebar & Keystrokes (in) \newline Text in sidebar (out) & Note is displayed as it is being entered.\\
+		
+	\end{tabularx}
+
+\end{table}
 
 \subsubsection{Individual Product Use Cases}
 
