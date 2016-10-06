@@ -98,15 +98,21 @@ User characteristics should go under assumptions.
 
 
 \subsubsection{Work Partitioning}
-\begin{table}[bp]
+\begin{table}[H]
 		\setlength{\extrarowheight}{1ex}
 	\caption {\bf Business Event List}
 	\begin{tabularx}{\textwidth}{L|C|R}
 		{\bf Event Name} & {\bf Input and Output} & {\bf Summary of BUC}\\
 		\hline
 		1. User clicks extension icon & Button click event (in) \newline Sidebar popup (out) & Extension sidebar pops out.\\
-		2. User types in sidebar & Keystrokes (in) \newline Text in sidebar (out) & Note is displayed as it is being entered.\\
-		
+		2. User types in sidebar & Keystrokes (in) \newline Text in sidebar 
+		(out) & Note is displayed as it is being entered.\\
+		3. User clicks save icon & Button click event (in) \newline User's note 
+		(in) \newline Save message (out) & Save user's note.\\
+		4. User clicks Note List button & Button click event (in) \newline Note 
+		Lust (out) & Show list of previous notes\\
+		5. User clicks note in Note List & Button click event (in) \newline 
+		Webpage (out) & Send user to URL attached to previously saved note
 	\end{tabularx}
 
 \end{table}
