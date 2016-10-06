@@ -5,6 +5,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{mdframed}
+\usepackage{framed}
+\usepackage{fancybox}
 \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
 \newcolumntype{C}{>{\centering\arraybackslash}m{5cm}}
 \newcolumntype{R}{>{\centering\arraybackslash}m{5cm}}
@@ -17,6 +20,8 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+
+
 
 \title{SE 3XA3: Requirements Document\\MacSidenotes}
 
@@ -38,6 +43,8 @@
 \listoftables
 \listoffigures
 
+
+
 \begin{table}[bp]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
@@ -52,6 +59,8 @@ Oct 6th & 1.0 & Completed before implementation\\
 \newpage
 
 \pagenumbering{arabic}
+
+%\newmdenv[linecolor=black]{reqbox}
 
 This document describes the requirements for ....  The template for the Software
 Requirements Specification (SRS) is a subset of the Volere
@@ -109,6 +118,39 @@ User characteristics should go under assumptions.
 \section{Non-functional Requirements}
 
 \subsection{Look and Feel Requirements}
+
+%\begin{reqbox}
+\begin{framed}
+	%---
+	\begin{center}
+		\begin{tabular}{ l c r }
+			%\multicolumn{1}{l}{Requirement \#:} & \multicolumn{1}{c}{Requirement Type: 10} & 
+			%\multicolumn{1}{r}{ Event/Use case \#:}
+			Requirement \#: & Requirement Type: 10 & Event/Use case \#: \\
+			%Left & Center & Right\\
+		\end{tabular} \\
+	\end{center}
+	%---
+	\textbf{Description:} The product should have an attractive html interface. \\
+	\\
+	\textbf{Rationale:} The product must aesthetically pleasing and easy to use
+	to benefit the end-users \\
+	\textbf{Originator:} Matthew Shortt \\
+	\textbf{Fit Criterion:} Stakeholder satisfaction regarding the appearance  \\
+	%---
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	%---  
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 5, 2016
+	%--
+\end{framed}
+%\end{reqbox}
+
+
+
 
 \subsection{Usability and Humanity Requirements}
 
