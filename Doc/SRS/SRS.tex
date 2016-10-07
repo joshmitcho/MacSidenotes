@@ -8,9 +8,9 @@
 \usepackage{mdframed}
 \usepackage{framed}
 \usepackage{fancybox}
-\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
-\newcolumntype{C}{>{\centering\arraybackslash}m{5cm}}
-\newcolumntype{R}{>{\centering\arraybackslash}m{5cm}}
+\newcolumntype{N}{>{\centering\arraybackslash}m{1.5cm}}
+\newcolumntype{L}{>{\centering\arraybackslash}m{2.2cm}}
+\newcolumntype{C}{>{\centering\arraybackslash}m{4.3cm}}
 
 \hypersetup{
     colorlinks,
@@ -50,7 +50,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Oct 6th & 1.0 & Completed before implementation\\
+Oct 6th, 2016 & 0.5 & Sections 2 and 4 Complete\\
 %Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -101,23 +101,40 @@ User characteristics should go under assumptions.
 \begin{table}[H]
 		\setlength{\extrarowheight}{1ex}
 	\caption {\bf Business Event List}
-	\begin{tabularx}{\textwidth}{L|C|R}
-		{\bf Event Name} & {\bf Input and Output} & {\bf Summary of BUC}\\
+	\begin{tabularx}{\textwidth}{N|L|C|C}
+		{\bf Event \#} & {\bf Event Name} & {\bf Input and Output} & {\bf 
+		Summary of BUC}\\
 		\hline
-		1. User clicks extension icon & Button click event (in) \newline Sidebar popup (out) & Extension sidebar pops out.\\
-		2. User types in sidebar & Keystrokes (in) \newline Text in sidebar 
+		1. &User clicks extension icon & Button click event (in) \newline 
+		Sidebar popup (out) & Extension sidebar pops out.\\
+		2. &User types in sidebar & Keystrokes (in) \newline Text in sidebar 
 		(out) & Note is displayed as it is being entered.\\
-		3. User clicks save icon & Button click event (in) \newline User's note 
+		3. &User clicks save icon & Button click event (in) \newline User's 
+		note 
 		(in) \newline Save message (out) & Save user's note.\\
-		4. User clicks Note List button & Button click event (in) \newline Note 
+		4. &User clicks Note List button & Button click event (in) \newline 
+		Note 
 		Lust (out) & Show list of previous notes\\
-		5. User clicks note in Note List & Button click event (in) \newline 
+		5. &User clicks note in Note List & Button click event (in) \newline 
 		Webpage (out) & Send user to URL attached to previously saved note
 	\end{tabularx}
 
 \end{table}
 
 \subsubsection{Individual Product Use Cases}
+{\bf 1.} User wishes to create a note for a Wikipedia article (or any webpage) 
+they are viewing, so they click the MacSidenotes icon in their chrome browser. 
+The notes sidebar pops up on the right side of the screen\\
+{\bf 2.} User begins to type their note, "Section 7 is relevant for thesis 
+paper" and it appears in the sidebar.\\
+{\bf 3.} User clicks the save icon, and their note is saved in local browser 
+storage along with the URL to that article.\\
+{\bf 4.} User wishes to view all previous notes, so they click the MacSidenotes 
+icon followed by the Notes List icon. A list of notes the user has recorded in 
+the past appear, alongside their respective source URLs.\\
+{\bf 5.} User wishes to recall a specific previous note, so they click on that 
+note in the Notes List. Chrome then takes them to the URL associated with that 
+note, displaying the note in the sidebar as it appeared when they saved it.
 
 \subsection{Functional Requirements}
 \begin{framed}
