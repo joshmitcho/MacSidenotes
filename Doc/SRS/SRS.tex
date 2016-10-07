@@ -110,11 +110,9 @@ User characteristics should go under assumptions.
 		2. &User types in sidebar & Keystrokes (in) \newline Text in sidebar 
 		(out) & Note is displayed as it is being entered.\\
 		3. &User clicks save icon & Button click event (in) \newline User's 
-		note 
-		(in) \newline Save message (out) & Save user's note.\\
+		note (in) \newline Save message (out) & Save user's note.\\
 		4. &User clicks Note List button & Button click event (in) \newline 
-		Note 
-		Lust (out) & Show list of previous notes\\
+		Note List (out) & Show list of previous notes\\
 		5. &User clicks note in Note List & Button click event (in) \newline 
 		Webpage (out) & Send user to URL attached to previously saved note
 	\end{tabularx}
@@ -142,26 +140,118 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\begin{center}
 		
 		\begin{tabular}{ l c r }
-			Requirement \#: F.1 & Requirement Type: 9 & Event/Use case \#: \\
+			Requirement \#: F.1 & Requirement Type: 9 & Event/Use case \#: 1\\
 		\end{tabular} \\
 	\end{center}
-	\textbf{Description:} The product should have an attractive html interface. \\
+	\textbf{Description:} The product must reveal a typing window "sidebar" on 
+	the right hand side of the chrome window when the extension icon is 
+	clicked. \\
 	\\
-	\textbf{Rationale:} The product must aesthetically pleasing and easy to use
-	to benefit the end-users \\
+	\textbf{Rationale:} Users need a location to type their notes. \\
+	\\
 	\textbf{Originator:} Josh Mitchell \\
-	\textbf{Fit Criterion:} Stakeholder satisfaction regarding the appearance  \\
+	\\
+	\textbf{Fit Criterion:} The window shall appear in the correct location 
+	within 1 second of the user clicking on the icon. \\
 	
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} Very High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 6th, 2016
+	
+\end{framed}
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: F.2 & Requirement Type: 9 & Event/Use case \#: 2\\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product must allow the user to type their notes 
+	into the sidebar.\\
+	\\
+	\textbf{Rationale:} Typing is a fast and simple way to record notes. \\
+	\\
+	\textbf{Originator:} Josh Mitchell \\
+	\\
+	\textbf{Fit Criterion:} The user's exact keyboard input shall appear in the 
+	sidebar within 0.1 seconds of the key being pressed. \\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 
+		5 \\
+		\textbf{Priority:} Very High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 6th, 2016
+	
+\end{framed}
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: F.3 & Requirement Type: 9 & Event/Use case \#: 3\\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} Upon the Save Note button being clicked, the product 
+	must save the user's note in local browser storage alongside the URL of the 
+	web page they were viewing that the time. \\
+	\\
+	\textbf{Rationale:} Saving notes for future reference greatly increases the 
+	usefulness of the extension. \\
+	\\
+	\textbf{Originator:} Josh Mitchell \\
+	\\
+	\textbf{Fit Criterion:} After pressing save, Chrome's local storage should 
+	append the exact content of the user's note and its associated URL to the 
+	list of saved notes. This operation will take under 5 seconds to complete. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 
+		4 \\
 		\textbf{Priority:} High & \textbf{Conflicts:} None\\
 	\end{tabular} \\
 	\\
 	\textbf{Supporting Materials:} None \\
-	\textbf{History:} Created October 5, 2016
+	\textbf{History:} Created October 6th, 2016
 	
 \end{framed}
-
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: F.4 & Requirement Type: 9 & Event/Use case \#: 4\\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product must allow the user to see all previously 
+	saved notes by clicking the Notes List button.\\
+	\\
+	\textbf{Rationale:} Viewing previous notes greatly increases the 
+	extension's usefulness \\
+	\\
+	\textbf{Originator:} Josh Mitchell \\
+	\\
+	\textbf{Fit Criterion:} The list of notes shall appear in the correct 
+	location within 1 second of the user clicking on the icon. \\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 
+		4 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 6th, 2016
+	
+\end{framed}
 \section{Non-functional Requirements}
 
 \subsection{Look and Feel Requirements}
@@ -177,9 +267,11 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\end{center}
 	\textbf{Description:} The product should have an attractive html interface. \\
 	\\
-	\textbf{Rationale:} The product must aesthetically pleasing and easy to use
-	to benefit the end-users \\
+	\textbf{Rationale:} The product must be aesthetically pleasing and easy to 
+	use to benefit the end-users \\
+	\\
 	\textbf{Originator:} Matthew Shortt \\
+	\\
 	\textbf{Fit Criterion:} Stakeholder satisfaction regarding the appearance  \\
 
 	\begin{tabular}{ll}
@@ -188,7 +280,7 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\end{tabular} \\
 	\\
 	\textbf{Supporting Materials:} None \\
-	\textbf{History:} Created October 5, 2016
+	\textbf{History:} Created October 5th, 2016
 
 \end{framed}
 
