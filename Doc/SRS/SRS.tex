@@ -10,7 +10,7 @@
 \usepackage{fancybox}
 \newcolumntype{N}{>{\centering\arraybackslash}m{1.5cm}}
 \newcolumntype{L}{>{\centering\arraybackslash}m{2.2cm}}
-\newcolumntype{C}{>{\centering\arraybackslash}m{4.3cm}}
+\newcolumntype{C}{>{\centering\arraybackslash}m{4.4cm}}
 
 \hypersetup{
     colorlinks,
@@ -50,7 +50,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Oct 6th, 2016 & 0.5 & Sections 2 and 4 Complete\\
+Oct 6th, 2016 & 0.5 & Section 2 Complete\\
 %Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -91,10 +91,21 @@ User characteristics should go under assumptions.
 
 \subsection{The Scope of the Work and the Product}
 
+Currently in the Chrome Web Store, there exists a few extensions that function 
+similarly to MacSidenotes. However, each either lacks a feature of this 
+product, or suffers from bugs and is poorly reviewed.\\
+\\
+MacSidenotes' combination of simplicity, dependable functionality and ability 
+to link back to web pages from the Note List set it apart from the current 
+offerings.
+
 \subsubsection{The Context of the Work}
 
-	\includegraphics[width=\linewidth]{images/owl.jpg}
-	*Note: Replace owl with actual diagram
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/WorkContextDiagram.png}
+	\caption{Work Context Diagram}
+\end{figure}
 
 
 \subsubsection{Work Partitioning}
@@ -106,15 +117,17 @@ User characteristics should go under assumptions.
 		Summary of BUC}\\
 		\hline
 		1. &User clicks extension icon & Button click event (in) \newline 
-		Sidebar popup (out) & Extension sidebar pops out.\\
+		Sidebar view (out) & Extension sidebar appears when icon is clicked.\\
 		2. &User types in sidebar & Keystrokes (in) \newline Text in sidebar 
 		(out) & Note is displayed as it is being entered.\\
 		3. &User clicks save icon & Button click event (in) \newline User's 
-		note (in) \newline Save message (out) & Save user's note.\\
+		note (in) \newline Webpage URL (in) \newline Save message (out) 
+		\newline Note \& URL (out)& Save user's note in local browser storage.\\
 		4. &User clicks Note List button & Button click event (in) \newline 
-		Note List (out) & Show list of previous notes\\
+		Note List view (out) & Show list of previous notes.\\
 		5. &User clicks note in Note List & Button click event (in) \newline 
-		Webpage (out) & Send user to URL attached to previously saved note
+		HTTP request (out) \newline Webpage response (in) \newline Webpage 
+		view (out) & Send user to URL attached to previously saved note.
 	\end{tabularx}
 
 \end{table}
@@ -122,7 +135,7 @@ User characteristics should go under assumptions.
 \subsubsection{Individual Product Use Cases}
 {\bf 1.} User wishes to create a note for a Wikipedia article (or any webpage) 
 they are viewing, so they click the MacSidenotes icon in their chrome browser. 
-The notes sidebar pops up on the right side of the screen\\
+The notes sidebar appears on the right side of the screen\\
 {\bf 2.} User begins to type their note, "Section 7 is relevant for thesis 
 paper" and it appears in the sidebar.\\
 {\bf 3.} User clicks the save icon, and their note is saved in local browser 
@@ -252,6 +265,36 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\textbf{History:} Created October 6th, 2016
 	
 \end{framed}
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: F.5 & Requirement Type: 9 & Event/Use case \#: 5\\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} If the user clicks on a previous note, the product 
+	must force Chrome to request the webpage associated with that note's URL.\\
+	\\
+	\textbf{Rationale:} The ability to revisit noted webpages greatly increases 
+	the extension's usefulness \\
+	\\
+	\textbf{Originator:} Josh Mitchell \\
+	\\
+	\textbf{Fit Criterion:} The HTTP request must be sent within 1 second of 
+	the user clicking the note. \\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 3 & \textbf{Customer Dissatisfaction:} 
+		3 \\
+		\textbf{Priority:} Moderate & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 6th, 2016
+	
+\end{framed}
+
 \section{Non-functional Requirements}
 
 \subsection{Look and Feel Requirements}
@@ -283,9 +326,6 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\textbf{History:} Created October 5th, 2016
 
 \end{framed}
-
-
-
 
 
 \subsection{Usability and Humanity Requirements}
