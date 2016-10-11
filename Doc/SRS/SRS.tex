@@ -11,6 +11,7 @@
 \newcolumntype{N}{>{\centering\arraybackslash}m{1.5cm}}
 \newcolumntype{L}{>{\centering\arraybackslash}m{2.2cm}}
 \newcolumntype{C}{>{\centering\arraybackslash}m{4.4cm}}
+\newcolumntype{R}{>{\centering\arraybackslash}m{6cm}}
 
 \hypersetup{
     colorlinks,
@@ -47,10 +48,10 @@
 
 \begin{table}[bp]
 \caption{\bf Revision History}
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Author(s)} & {\bf Notes}\\
 \midrule
-Oct 6th, 2016 & 0.5 & Section 2 Complete\\
+Oct 6th, 2016 & 0.5 & Josh & Section 2 Complete\\
 %Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -372,21 +373,75 @@ It is not yet known if our inexperience with JavaScript will be a significant hu
 	{sidenotes}\\
 	*Note: this is the existing extension that this project is based on. It is currently in a non-functioning state, although some insight into extension design can be gleaned from it.
 \subsection{New Problems}
-
+\subsubsection{Effects on the Current Environment}
+	Due to the siloed implementation of Chrome extensions, MacSidenotes should have no adverse effects on the functionality of other extensions.
+\subsubsection{Effects on the Installed Systems}
+	MacSidenotes will appear in the extension bar alongside any other extensions the user has installed. Other than making the address bar shorter (by the length of the MacSidenotes icon), it should co-exist peacefully with the rest of the user's Chrome ecosystem.
+\subsubsection{Potential User Problems}
+	MacSidenotes should not adversely affect the user's interaction with other Chrome extensions.
+\subsubsection{Limitations in the Anticipated Implementation Environment That May Inhibit the New Product} 	
+	If the user's machine barely meets Chrome's minimum system specifications, adding MacSidenotes (or any other extension for that matter) may cause slowdown or crashes. This is unlikely, however, given the lightweight nature of MacSidenotes and the system specifications of most semi-modern computers.
+	
 \subsection{Tasks}
-
+	\href{https://gitlab.cas.mcmaster.ca/macsidenotes/macsidenotes/blob/master/ProjectSchedule/MacSidenotesProjectSchedule.gan}
+	{MacSidenotes Gantt Chart .gan format}\\
+	\href{https://gitlab.cas.mcmaster.ca/macsidenotes/macsidenotes/blob/master/ProjectSchedule/MacSidenotesProjectSchedule.pdf}
+	{MacSidenotes Gantt Chart .pdf format}
 \subsection{Migration to the New Product}
-
+	Due to the siloed nature of Chrome extensions, modifications to the existing system are not necessary for the implementation of MacSidenotes.
 \subsection{Risks}
+\begin{table}[H]
+	\setlength{\extrarowheight}{1ex}
+	\caption {\bf Risks}
+	\begin{tabularx}{\textwidth}{N|C|L|C}
+		{\bf Priority} & {\bf Risk} & {\bf Probability, \newline Severity} & {\bf Mitigation Plan}\\
+		\hline
+		1 & Developers' inexperience with JavaScript prevents correct/timely implementation of project & 5\%,  Extreme & Familiarizing with some of the many relevant JavaScript tutorials found online\\
+		2 & Developers' inability to meet deadlines prevents timely completion of project & 5\%, Extreme & Adhering to a weekly meeting schedule and discussing possible setbacks before they become overwhelming\\
+		3 & Incorrect implementation of Req F.3 causes loss of user data & 10\%,  High & Thorough and complete testing of the note saving system\\
+	\end{tabularx}
+	
+\end{table}
 
 \subsection{Costs}
+	Costs will be measured in time required to complete each Functional Requirement.
+\begin{table}[H]
+	\setlength{\extrarowheight}{1ex}
+	\caption {\bf Costs}
+	\begin{tabularx}{\textwidth}{R|R}
+		{\bf Requirement} & {\bf Time} \\
+		\hline
+		F.1 & 3 Days \\
+		F.2 & 1 Day \\
+		F.3 & 3 Days \\
+		F.4 & 2 Days \\
+		F.5 & 2 Days \\
+		
+	\end{tabularx}
+	
+\end{table}
 
 \subsection{User Documentation and Training}
-
+\subsubsection{User Documentation Requirements}
+	\begin{table}[H]
+		\setlength{\extrarowheight}{1ex}
+		\caption {\bf User Documentation Requirements}
+		\begin{tabularx}{\textwidth}{R|R}
+			{\bf Documentation} & {\bf Purpose} \\
+			\hline
+			Chrome Web Store Overview & To describe the extension's features to potential users \\
+			How To Use Button & To introduce new users to the functionality of MacSidenotes. It lists the steps required to create, save and recall notes.\\
+		\end{tabularx}
+		
+	\end{table}
+\subsubsection{Training Requirements}
+	MacSidenotes requires no training to be used.
+	
 \subsection{Waiting Room}
-
+	In future, notes may be able to be stored in a cloud service like Google Drive or Dropbox to be accessed from anywhere. They may also be linked to the user's Chrome account to sync across multiple devices.\\
+	These requirements are not necessary for a minimum viable product, so they will be revisited once a minimum viable product is achieved.
 \subsection{Ideas for Solutions}
-
+	None at this time.
 \bibliographystyle{plainnat}
 
 \bibliography{SRS}
