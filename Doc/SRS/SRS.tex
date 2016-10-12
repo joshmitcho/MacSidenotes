@@ -66,27 +66,75 @@ Oct 6th, 2016 & 0.5 & Josh & Section 2 Complete\\
 This document describes the requirements for ....  The template for the Software
 Requirements Specification (SRS) is a subset of the Volere
 template~\citep{RobertsonAndRobertson2012}.  If you make further modifications
-to the template, you should explicity state what modifications were made.
+to the template, you should explicitly state what modifications were made.
 
 \section{Project Drivers}
 
 \subsection{The Purpose of the Project}
 
+The purpose of this project is to give those who have trouble with online disorganization 
+a vehicle in which they can fully catalogue their internet navigation, leading to a more 
+enhanced, stress-free browsing experience. 
+
 \subsection{The Stakeholders}
 
 \subsubsection{The Client}
 
+The client for this project is Dr. Spencer Smith of McMaster University.
+
 \subsubsection{The Customers}
+
+\begin{itemize}
+	\item Anyone who is looking for a more in depth and organized way of tracking where 
+	and why they were searching the web.
+	\item Those who take a more thorough approach to their online organization, such as 
+	students and working professionals.
+\end{itemize}
 
 \subsubsection{Other Stakeholders}
 
-\subsection{Mandated Constraints}
+\begin{itemize}
+	\item Team members creating the application. 
+	\item Teaching Assistant's interested in the project. 
+\end{itemize}
+
+\subsection{Mandated Constraints} %-- Added subsections to organize the madated 
+%constraints
+\subsubsection{Solution Constraints}
+Description: The product shall be able to be used by any computer running Windows, 
+Mac OS, Linux or Chrome OS with downloaded Google Chrome browser.
+Rationale: The user will not be restricted by operating system.
+Fit Criterion: The product shall be tested in all operating systems to ensure compatibility. 
+
+\subsubsection{Partner or Collaborative Applications}
+The application will be developed based on an existing open source project written in 
+JavasScript. 
+
+\subsubsection{Schedule Constraints}
+The project must be finished by mid December 2016.
+
+\subsubsection{Budget Constraints}
+The budget for our project is \$0.
+
+
 
 \subsection{Naming Conventions and Terminology}
 
+\begin{enumerate}
+	\item Google Chrome (Chrome): Google Chrome is a freeware web browser developed 
+	by Google.
+	\item JavaScript: An object-oriented computer programming language commonly used 
+	to create interactive effects within web browsers.
+	\item URL: An acronym for Uniform Resource Locator and is a reference (an 
+	address) to a resource on the Internet (ie. a Website). 
+\end{enumerate}
+
 \subsection{Relevant Facts and Assumptions}
 
-User characteristics should go under assumptions.
+User must have a working computer with chrome installed. The user must have some 
+familiarity with surfing the web and general internet/computer use. The user must have an 
+understanding of the English language if they wish to comprehend any additional 
+instructions given. 
 
 \section{Functional Requirements}
 
@@ -309,14 +357,17 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 			Requirement \#: NF.1 & Requirement Type: 10 & Event/Use case \#: \\
 		\end{tabular} \\
 	\end{center}
-	\textbf{Description:} The product should have an attractive html interface. \\
+	\textbf{Description:} The product should have an inviting html/css interface.\\
 	\\
-	\textbf{Rationale:} The product must be aesthetically pleasing and easy to 
-	use to benefit the end-users \\
+	\textbf{Rationale:} The product must be aesthetically pleasing to the user, as well as 
+	easy 
+	to use.  \\
 	\\
 	\textbf{Originator:} Matthew Shortt \\
 	\\
-	\textbf{Fit Criterion:} Stakeholder satisfaction regarding the appearance  \\
+	\textbf{Fit Criterion:} When opened sidebar should take up 30 or less percent of the 
+	browsing window size.   
+	\\
 
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
@@ -328,25 +379,399 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 
 \end{framed}
 
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.2 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product should not take up vast amounts on the user's 
+	web-page.\\
+	\\
+	\textbf{Rationale:} The product must take up as little space as possible while still 
+	functioning properly in order to not hinder the user's online browsing experience.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Should match or surpass stakeholder expectation for appearance.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 4 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
 
 \subsection{Usability and Humanity Requirements}
 
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.3 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall be easy to use for persons with little experience 
+	using the internet and Chrome.\\
+	\\
+	\textbf{Rationale:} The ability to be used easily greatly appreciates the app's 
+	usefulness.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Ninety percent of 3XA3 students should be able to use the 
+	extension effortlessly with less than 5 minutes of exposure to it.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.4 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall help the user improve online organization.\\
+	\\
+	\textbf{Rationale:} The extension is designed to help users with their online 
+	organizational abilities.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} After two weeks of use, the user shall see their online browsing 
+	organization has improved tenfold.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 4 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.5 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall operate using the English language.\\
+	\\
+	\textbf{Rationale:} Most users will be able to operate the extension with little knowledge 
+	of the English language, and programming languages are in English.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Instructions and alerts will be outputted in English.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 4 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
+
 \subsection{Performance Requirements}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.6 & Requirement Type: 10 & Event/Use case \#: 1-5 \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} Any response of the system to user input shall be fast enough to 
+	not interrupt the users flow.\\
+	\\
+	\textbf{Rationale:} The extension must be fast in order to keep up with the user.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} The extension shall respond in less than 0.1 seconds in most 
+	cases. No response shall take longer than 2 seconds. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.7 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall be available for use 24 hours a day 365 days a 
+	year.\\
+	\\
+	\textbf{Rationale:} The extension must always be available for use because the user has 
+	vital 
+	information stored in it.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} The user shall always be able to use the application.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
 
 \subsection{Operational and Environmental Requirements}
 
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.8 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall be used by any person with a working computer 
+	with Chrome installed.\\
+	\\
+	\textbf{Rationale:} The user must have these specifications in order to use the 
+	extension.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} The extension will work on any Computer with Chrome installed on 
+	it.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.9 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product should be able to be put on the Google PlayStore.\\
+	\\
+	\textbf{Rationale:} Any person with Chrome would be able to install the extension.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} The extension will be downloadable from the store and work on 
+	the computer.  
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 2 & \textbf{Customer Dissatisfaction:} 2 \\
+		\textbf{Priority:} Low & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
 \subsection{Maintainability and Support Requirements}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.10 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product might eventually be able to save notes with Google 
+	Drive.\\
+	\\
+	\textbf{Rationale:} The user could then have access to their notes and history on any 
+	computer that they sign into Chrome with.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Specification of future environments that the application will have 
+	to deal with. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 3 & \textbf{Customer Dissatisfaction:} 3 \\
+		\textbf{Priority:} Low & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
 
 \subsection{Security Requirements}
 
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.11 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} Only holders of the users login information to Chrome will have 
+	access to the browsing history and notes of the user.\\
+	\\
+	\textbf{Rationale:} The users personal browsing is not shared with anyone who does 
+	not have access to it already.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Users without permissions to Chrome accounts will not be 
+	granted access to the users extension. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
 \subsection{Cultural Requirements}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.12 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall not be offensive to religious or ethnic groups.\\
+	\\
+	\textbf{Rationale:} This would be insensitive to users.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} Will not contain any derogatory or offensive language or icons. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 4 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
 
 \subsection{Legal Requirements}
 
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.13 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall comply with the 'Developer Program Policies' laid 
+	out by Google.\\
+	\\
+	\textbf{Rationale:} Ensure no legal infringements are occurring.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} All policies must be met. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
+
 \subsection{Health and Safety Requirements}
 
-This section is not in the original Volere template, but health and safety are
-issues that should be considered for every engineering project.
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			Requirement \#: NF.14 & Requirement Type: 10 & Event/Use case \#: \\
+		\end{tabular} \\
+	\end{center}
+	\textbf{Description:} The product shall not affect the users health in any manner.\\
+	\\
+	\textbf{Rationale:} Causing health or safety issues does not align in any way with the 
+	view of this project and should be taken seriously.  \\
+	\\
+	\textbf{Originator:} Matthew Shortt \\
+	\\
+	\textbf{Fit Criterion:} No harm will come to the user. 
+	\\
+	
+	\begin{tabular}{ll}
+		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+		\textbf{Priority:} High & \textbf{Conflicts:} None\\
+	\end{tabular} \\
+	\\
+	\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created October 7th, 2016
+	
+\end{framed}
 
 \section{Project Issues}
 
