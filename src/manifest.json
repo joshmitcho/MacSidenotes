@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+	
+	"name": "MacSidenotes",
+	"description": "Extension for taking notes on any website. Your notes are linked with the URL and will appear upon your next visit. Works offline using your browser's local storage.",
+	"version": "1.0",
+
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "sidebar.html",
+		"default_title": "MacSidenotes: Annotate the Web"
+	},
+	"permissions": [
+		"activeTab",
+		"https://ajax.googleapis.com/"
+	]
+}
