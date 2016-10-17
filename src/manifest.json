@@ -1,9 +1,13 @@
 {
 	"manifest_version": 2,
-	
 	"name": "MacSidenotes",
 	"description": "Extension for taking notes on any website. Your notes are linked with the URL and will appear upon your next visit. Works offline using your browser's local storage.",
-	"version": "1.0",
+	"version": "0.5",
+
+	"icons": {
+		"16": "icon.png", 
+		"48": "icon48.png"
+	},
 
 	"browser_action": {
 		"default_icon": "icon.png",
