@@ -110,7 +110,7 @@ function customAlert(msg,duration)
 {
  var styler = document.createElement("div");
   styler.setAttribute("style","border: solid 2px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver");
- styler.innerHTML = "<p>"+msg+"<p>";
+ styler.innerHTML = "<p align='center'>"+msg+"<p>";
  setTimeout(function()
  {
    styler.parentNode.removeChild(styler);
