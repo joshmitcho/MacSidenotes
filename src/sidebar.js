@@ -2,6 +2,12 @@
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
     
+
+    for (var i = 0; i < localStorage.length; i++){
+        customAlert(localStorage.getItem(localStorage.key(i)), "5000");
+    }   
+
+
     // load note associated with current tab
     updateNote();
 
