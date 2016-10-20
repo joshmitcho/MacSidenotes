@@ -9,7 +9,7 @@
 		<title>MacSidenotes Extension's Popup</title>
 		<style>
 			body {
-			
+
 	
 			font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
 			font-size: 100%;
@@ -21,16 +21,62 @@
 				overflow: hidden;
 				max-width: 400px;
 			}
+
+			table{
+			    font-family: arial, sans-serif;
+			    border-collapse: collapse;
+			    width: 100%;
+			}
+
+			td, th {
+			    border: 1px solid #dddddd;
+			    text-align: left;
+			    padding: 8px;
+			}	
+
+			tr:nth-child(even) {
+    			background-color: #dddddd;
+			}
+
+
+
 		</style>
 		<script src="sidebar.js"></script>
 	</head>
 	<body>
-		Enter your note below
+
+		<!-- This would be an option if we wanted a title for each note 
 		
+		<p><label for="title">Title</label><br />
+        <input type="text" id="title" name="title" size="50" value="" /></p>
+        
+        -->
+            
+
+		<p>Enter your note below</p>
 		<textarea id="note" rows="30" cols="100"></textarea>
-		
 		<button id="save">Save Note</button>
+		<button id="list" style="float: right;" onclick="clicks++">List</button>
+
+
 		
+		<div id="test" style="display: none">
+		<table>
+  			<tr>
+			    <th>URL</th>
+			    <th>Note</th>
+			 
+	  		</tr>
+	  		<tr>
+	    		<td><a href="http://nhl.com" target="_blank">http://nhl.com</a></td>
+	    		<td>The NHL website</td>
+	    		
+	  		</tr>
+	  
+	  	</table>
+	  </div>
+
 	</body>
 </html>
+
 

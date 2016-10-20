@@ -1,26 +1,75 @@
-
+var numClicks;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
     
-
-    for (var i = 0; i < localStorage.length; i++){
-        customAlert(localStorage.getItem(localStorage.key(i)), "5000");
-    }   
-
+    //update the master list
+    var masterList = updateMasterList();
 
     // load note associated with current tab
-    updateNote();
+    updateNote();    
 
-	var link = document.getElementById('save');
+    //initializing click count for list button
+	numClicks = 0;
+
+    var link = document.getElementById('save');
     // onClick's logic below:
     link.addEventListener('click', function() {
     	    
         saveNote();
         
     });
+
+
+    var link1 = document.getElementById('list');
+    
+
+    // onClick's logic below:
+    link1.addEventListener('click', function() {
+        
+        
+        showList();
+        clickCounter();
+        
+        
+    });
 });
 
-/* This function updates  */
+function clickCounter(){
+    numClicks += 1;
+}
+
+function showList(){
+    //customAlert("SHOWING LIST", "4000");
+    if(numClicks % 2 == 0){
+        document.getElementById("test").style.display = 'block';
+    }
+    else{
+        document.getElementById("test").style.display = 'none';
+    }
+    
+   
+
+}
+
+/* Funciton updates the master list containing all notes */
+function updateMasterList(){
+
+    // This is the URL:      localStorage.key(i)                      
+    // This is the textArea: localStorage.getItem(localStorage.key(i))
+
+    var masterList = new Array();
+
+    for (var i = 0; i < localStorage.length; i++){
+
+        masterList[i] = localStorage.key(i);
+       
+    }
+
+    return masterList;
+
+}
+
+/* This function brings up the note referenced to the current website  */
 function updateNote(){
 
 
