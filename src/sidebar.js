@@ -1,9 +1,15 @@
 var numClicks;
+var updateNum;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
-    
+
+    updateNum = 0;
+
+    //delete any saved empty notes
+    deleteEmpty();
+
     //update the master list
-    var masterList = updateMasterList();
+    //var masterList = updateMasterList();
 
     // load note associated with current tab
     updateNote();    
@@ -21,33 +27,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     var link1 = document.getElementById('list');
-    
-
     // onClick's logic below:
     link1.addEventListener('click', function() {
-        
         
         showList();
         clickCounter();
         
+    });
+
+    var link2 = document.getElementById('delete');
+    // onClick's logic below:
+    link2.addEventListener('click', function() {
         
+        deleteNote();
+
     });
 });
 
+
+function deleteNote(){
+
+    var myURL = getURL();
+    document.getElementById("note").value = '';
+    localStorage.removeItem(myURL);
+    customAlert("Note Deleted!", "2000");
+    updateMasterList();
+
+}
+
+/* Function deletes any empty notes */
+function deleteEmpty(){
+
+    for(var cnt = 0; cnt < localStorage.length; cnt++){
+        if(localStorage.getItem(localStorage.key(cnt)) == ''){
+            localStorage.removeItem(localStorage.key(cnt));   
+        }
+    }
+
+}
+
+/* Counts the number of times list button has been clicked */
 function clickCounter(){
     numClicks += 1;
 }
 
 function showList(){
-    //customAlert("SHOWING LIST", "4000");
+
     if(numClicks % 2 == 0){
         document.getElementById("test").style.display = 'block';
     }
     else{
         document.getElementById("test").style.display = 'none';
     }
-    
-   
 
 }
 
@@ -57,15 +88,48 @@ function updateMasterList(){
     // This is the URL:      localStorage.key(i)                      
     // This is the textArea: localStorage.getItem(localStorage.key(i))
 
-    var masterList = new Array();
+    // var masterList = new Array();
 
-    for (var i = 0; i < localStorage.length; i++){
+    // for (var i = 0; i < localStorage.length; i++){
 
-        masterList[i] = localStorage.key(i);
+    //     masterList[i] = localStorage.key(i);    
        
+    // }
+
+
+    for(var j=0; j < localStorage.length; j++){
+        
+        if(updateNum == 0) {
+            
+            var table = document.getElementById("table");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            var str = localStorage.key(j);
+    
+            cell1.innerHTML = str.link(localStorage.key(j));
+            cell2.innerHTML = localStorage.getItem(localStorage.key(j));
+        
+        }
+        else{
+
+            var table = document.getElementById("table");
+            table.deleteRow(1);
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            var str = localStorage.key(j);
+    
+            cell1.innerHTML = str.link(localStorage.key(j));
+            cell2.innerHTML = localStorage.getItem(localStorage.key(j));
+
+        }
+
     }
 
-    return masterList;
+    updateNum++;
 
 }
 
@@ -92,8 +156,7 @@ function updateNote(){
         
     });
 
-
-
+    updateMasterList();
 
 }
 
@@ -106,7 +169,6 @@ function saveNote() {
     var note = document.getElementById("note").value;
 
     // Get the current URL
-    var fetchURL;
     var tabURL = getURL();
 
     
@@ -117,13 +179,9 @@ function saveNote() {
 
     // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
     updateNote();
+    
 
     customAlert("Note Saved!", "2000");
-
-
-
-
-
 
   
     /* ------------- ATTEMPT AT USING CHROME API FOR STORAGE ------------- */
