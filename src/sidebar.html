@@ -26,16 +26,23 @@
 
 		<p>Enter your note below</p>
 		<textarea id="note" rows="30" cols="100"></textarea>
+		
 		<button id="save">Save Note</button>
-		<button id="delete" style="margin: 0 auto;">Delete Note</button>
-		<button id="list" style="float: right;">List</button>
+		<button id="delete">Delete Note</button>
+		<button id="list">List</button>
 
-		<div style="clear: both;"></div>
+		<div id="deletePrompt">
+			<p>Are you sure you want to delete the note?</p>
+			<button id="YES">YES</button>
+			<button id="NO">NO</button>
+			<p></p>
+	
+		</div>
 		
 
 
 		
-		<div id="test" style="display: none">
+		<div id="test">
 		<table id="table">
   			<tr>
 			    <th>URL</th>

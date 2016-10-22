@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   greeting: 'hello there!',
   source: 'my-devtools-extension'
 }, '*');
-    
+
     updateNum = 0;
 
     //delete any saved empty notes
@@ -54,13 +54,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function deleteNote(){
 
-    window.confirm("Are you sure you want to delete this?");
+    document.getElementById("deletePrompt").style.display = 'block';
 
-    var myURL = getURL();
-    document.getElementById("note").value = '';
-    localStorage.removeItem(myURL);
-    updateMasterList();
-    customAlert("Note Deleted!", "2000");
+    // var myURL = getURL();
+    // document.getElementById("note").value = '';
+    // localStorage.removeItem(myURL);
+    // updateMasterList();
+    // customAlert("Note Deleted!", "2000");
+
+    var itemDelete = document.getElementById('YES');
+    // onClick's logic below:
+    itemDelete.addEventListener('click', function() {
+        
+        document.getElementById("deletePrompt").style.display = 'none';
+
+        var myURL = getURL();
+        document.getElementById("note").value = '';
+        localStorage.removeItem(myURL);
+        updateMasterList();
+        customAlert("Note Deleted!", "2000");        
+
+    });
+
+    var itemSave = document.getElementById('NO');
+    // onClick's logic below:
+    itemSave.addEventListener('click', function() {
+
+        document.getElementById("deletePrompt").style.display = 'none';
+        
+        customAlert("Note Was Not Deleted", "2000");        
+
+    });
 
 }
 
@@ -98,13 +122,9 @@ function updateMasterList(){
     // This is the textArea: localStorage.getItem(localStorage.key(i))
 
     // var masterList = new Array();
-
     // for (var i = 0; i < localStorage.length; i++){
-
     //     masterList[i] = localStorage.key(i);    
-       
     // }
-
 
     for(var j=0; j < localStorage.length; j++){
         
@@ -145,23 +165,17 @@ function updateMasterList(){
 /* This function brings up the note referenced to the current website  */
 function updateNote(){
 
-
-    //customAlert("gettingURL...", "4000");
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
         pageURL = tabs[0].url;
-        //customAlert("gotURL... " + pageURL, "4000");
+        
         var previousNotes = localStorage[pageURL];
-        //customAlert("PREV_NOTES: " + previousNotes, "4000");
 
         if ( previousNotes === undefined ){
             document.getElementById("note").value = "";
-            //customAlert("NEW --> THEREFORE BLANK", "4000");
 
         } else {
             document.getElementById("note").value = previousNotes;
         }
-        
-        //customAlert("Update Complete...", "4000");
         
     });
 
@@ -190,7 +204,7 @@ function saveNote() {
     updateNote();
     
 
-    customAlert("Note Saved!", "2000");
+    customAlertGood("Note Saved!", "2000");
 
   
     /* ------------- ATTEMPT AT USING CHROME API FOR STORAGE ------------- */
@@ -232,6 +246,19 @@ function customAlert(msg,duration)
 {
  var styler = document.createElement("div");
   styler.setAttribute("style","border: solid 2px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver");
+ styler.innerHTML = "<p align='center'>"+msg+"<p>";
+ setTimeout(function()
+ {
+   styler.parentNode.removeChild(styler);
+ },duration);
+ document.body.appendChild(styler);
+}
+
+/* Function to display messages for testing purposes as well as notifying user of saved changes*/
+function customAlertGood(msg,duration)
+{
+ var styler = document.createElement("div");
+  styler.setAttribute("style","border: solid 2px black;width:auto;height:auto;top:50%;left:40%;background-color:green;color:Silver");
  styler.innerHTML = "<p align='center'>"+msg+"<p>";
  setTimeout(function()
  {
