@@ -3,12 +3,6 @@ var updateNum;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
 
-
-    window.postMessage({
-  greeting: 'hello there!',
-  source: 'my-devtools-extension'
-}, '*');
-
     updateNum = 0;
 
     //delete any saved empty notes
@@ -48,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteNote();
 
     });
+
+    //Allows links to be opened in a new tab
+    window.addEventListener('click',function(e){
+        if(e.target.href!==undefined){
+            chrome.tabs.create({url:e.target.href})
+        }
+    })
 
 });
 
