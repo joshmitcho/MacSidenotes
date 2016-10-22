@@ -3,6 +3,12 @@ var updateNum;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
 
+
+    window.postMessage({
+  greeting: 'hello there!',
+  source: 'my-devtools-extension'
+}, '*');
+    
     updateNum = 0;
 
     //delete any saved empty notes
@@ -42,16 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteNote();
 
     });
+
 });
 
 
 function deleteNote(){
 
+    window.confirm("Are you sure you want to delete this?");
+
     var myURL = getURL();
     document.getElementById("note").value = '';
     localStorage.removeItem(myURL);
-    customAlert("Note Deleted!", "2000");
     updateMasterList();
+    customAlert("Note Deleted!", "2000");
 
 }
 

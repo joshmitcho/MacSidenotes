@@ -7,39 +7,10 @@
 <html>
 	<head>
 		<title>MacSidenotes Extension's Popup</title>
-		<style>
-			body {
-
-	
-			font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-			font-size: 100%;
-			}
-			#status {
-				/* avoid an excessively wide status text */
-				white-space: pre;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				max-width: 400px;
-			}
-
-			table{
-			    font-family: arial, sans-serif;
-			    border-collapse: collapse;
-			    width: 100%;
-			}
-
-			td, th {
-			    border: 1px solid #dddddd;
-			    text-align: left;
-			    padding: 8px;
-			}	
-
-			tr:nth-child(even) {
-    			background-color: #dddddd;
-			}
-
-
-		</style>
+		
+		<!-- Core CSS -->
+		<link href="sidebar.css" rel="stylesheet">
+		<!-- Core JS -->
 		<script src="sidebar.js"></script>
 	</head>
 	<body>
@@ -56,8 +27,11 @@
 		<p>Enter your note below</p>
 		<textarea id="note" rows="30" cols="100"></textarea>
 		<button id="save">Save Note</button>
-		<button id="list" style="float: right;">List</button>
 		<button id="delete" style="margin: 0 auto;">Delete Note</button>
+		<button id="list" style="float: right;">List</button>
+
+		<div style="clear: both;"></div>
+		
 
 
 		
