@@ -3,6 +3,14 @@ body {
 	font-size: 100%;
 }
 
+.bold{
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
 #status {
 	/* avoid an excessively wide status text */
 	white-space: pre;

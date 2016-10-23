@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //delete any saved empty notes
     deleteEmpty();
 
-    //update the master list
-    //var masterList = updateMasterList();
-
     // load note associated with current tab
     updateNote();    
 
@@ -43,12 +40,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
+    var boldText = document.getElementById('bold');
+    // onClick's logic below:
+    boldText.addEventListener('click', function() {
+        
+        document.getElementById('note').className = 'bold';
+
+    });
+
+    var italicText = document.getElementById('italic');
+    // onClick's logic below:
+    italicText.addEventListener('click', function() {
+        
+        document.getElementById('note').className = 'italic';
+
+    });
+
     //Allows links to be opened in a new tab
     window.addEventListener('click',function(e){
         if(e.target.href!==undefined){
             chrome.tabs.create({url:e.target.href})
         }
-    })
+    });
+
 
 });
 
