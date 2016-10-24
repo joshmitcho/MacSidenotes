@@ -40,21 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-    var boldText = document.getElementById('bold');
-    // onClick's logic below:
-    boldText.addEventListener('click', function() {
+    // var boldText = document.getElementById('bold');
+    // // onClick's logic below:
+    // boldText.addEventListener('click', function() {
         
-        document.getElementById('note').className = 'bold';
+    //     document.getElementById('note').className = 'bold';
 
-    });
+    // });
 
-    var italicText = document.getElementById('italic');
-    // onClick's logic below:
-    italicText.addEventListener('click', function() {
+    // var italicText = document.getElementById('italic');
+    // // onClick's logic below:
+    // italicText.addEventListener('click', function() {
         
-        document.getElementById('note').className = 'italic';
+    //     document.getElementById('note').className = 'italic';
 
-    });
+    // });
 
     //Allows links to be opened in a new tab
     window.addEventListener('click',function(e){
