@@ -3,6 +3,7 @@ var updateNum;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
 
+    //reinitializing updateNum
     updateNum = 0;
 
     //delete any saved empty notes
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
+/* Makes user confirm whether or not they want to delete note */
 function deleteNote(){
 
     document.getElementById("deletePrompt").style.display = 'block';

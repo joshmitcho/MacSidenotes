@@ -3,6 +3,31 @@ body {
 	font-size: 100%;
 }
 
+#customAlert{
+	display: none;
+	align: center;
+	border: solid 2px Red;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 40%;
+	background-color: #444;
+	color: Silver;
+}
+
+#customAlertGood{
+	display: none;
+	align: center;
+	border: solid 2px black;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 40%;
+	background-color: green;
+	color: Silver;
+}
+
+
 .bold{
 	font-weight: bold;
 }
@@ -31,6 +56,7 @@ body {
 	float: right;
 }
 
+/* CSS for RED delete confirmation window */
 #deletePrompt{
 	display: none;
 	text-align: center;
@@ -44,6 +70,7 @@ body {
 	color: Silver;
 }
 
+/* CSS for list table */
 table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
