@@ -54,7 +54,20 @@ adherence of MacSidenotes to its Functional and Non-Functional Requirements.
 
 \subsection{Purpose}
 
+The purpose of this document is to create a plan that testers can easily follow in 
+order to catch and resolve as many program errors as possible. This plan includes a wide 
+variety of test cases that cover both functional and non-functional requirements together 
+with automated and manual testing strategies. 
+
 \subsection{Scope}
+
+The Chrome extension that is created for this project is one that is very simple to use and 
+very useful for many people.  Since the project is very compact, the scope for our test 
+plan will cover the front end and the back end of our implementation. Our front end being 
+the GUI the user interacts with, and the back end being what the code does behind the 
+scenes, such as using Chrome's localStorage to save users Notes. The scope of the test 
+plan will inevitably expand proportionally to the growth of the project, which may include 
+an option of saving the Note to the users Google Drive.
 
 \subsection{Acronyms, Abbreviations, and Symbols}
 	
@@ -65,8 +78,12 @@ adherence of MacSidenotes to its Functional and Non-Functional Requirements.
 \toprule
 \textbf{Abbreviation} & \textbf{Definition} \\
 \midrule
-Abbreviation1 & Definition1\\
-Abbreviation2 & Definition2\\
+localStorage & Google Chrome's method for storing data locally.\\
+JS & JavaScript\\
+URL & Uniform Resource Locator\\
+HTML & HyperText Markup Language\\
+CSS & Cascading Style Sheets\\
+POC & Proof Of Concept\\
 \bottomrule
 \end{tabularx}
 
@@ -92,6 +109,10 @@ by clicking the List button.\\
 \end{table}	
 
 \subsection{Overview of Document}
+
+This document is a summation of all the tests that will be performed on our projext to 
+ensure that we detect as many errors as possible. This includes tests which are 
+automated as well as manual.
 
 \section{Plan}
 	
@@ -153,118 +174,290 @@ See Gantt Chart at the following links:
 	
 \subsection{Tests for Functional Requirements}
 
-\subsubsection{Area of Testing1}
+\subsubsection{Sidebar - Typing Window}
 		
 \paragraph{Title for Test}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{Sidebar Open\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Functional, Dynamic, Manual
 					
-Initial State: 
+Initial State: Default Chrome browser window.
 					
-Input: 
+Input: Extension icon click.
 					
-Output: 
+Output: Sidebar will appear at the top right of the page.
 					
-How test will be performed: 
+How test will be performed: Test will be performed by clicking the icon for the 
+MacSidenotes extension at the top right hand corner of the Google Chrome browser.
 					
-\item{test-id2\\}
+\item{Sidebar Close-1\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Functional, Dynamic, Manual
 					
-Initial State: 
+Initial State: Sidebar appears at the top right of the page.
 					
-Input: 
+Input: Extension icon click.
 					
-Output: 
+Output: Sidebar disappears leaving solely the browser page.
 					
-How test will be performed: 
+How test will be performed: Test will be performed by clicking the icon for the 
+MacSidenotes extension at the top right hand corner of the Google Chrome browser.
+
+\item{Sidebar Close-2\\}
+
+Type: Functional, Dynamic, Manual
+
+Initial State: Sidebar appears at the top right of the page.
+
+Input: Click event on browser page.
+
+Output: Sidebar disappears leaving solely the browser page.
+
+How test will be performed: Test will be performed by clicking anywhere on the 
+browser page excluding the extension icon or within the text window.
 
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Note Taking}
 
-...
+\paragraph{Typing}
+
+\begin{enumerate}
+	
+	\item{Input 1\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Blank text area.
+	
+	Input: User keyboard input.
+	
+	Output: User keyboard input.
+	
+	How test will be performed: Test will be performed by typing any keyboard input into 
+	the text area and verify that the output matches exactly what was typed.
+	
+\end{enumerate}
+
+\subsubsection{Note Saving}
+
+\paragraph{Save Note}
+
+\begin{enumerate}
+	
+	\item{Save Note - 1\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Text window with keyboard input.
+	
+	Input: Click event on 'Save Note' button.
+	
+	Output: Confirmation Message 'Note Saved!'
+	
+	How test will be performed: Test will be performed by clicking the 'Save Note' button 
+	and verifying that when the note is closed and re-opened it is the same as when the 
+	save button	was last clicked. 
+	
+\end{enumerate}
+
+\subsubsection{Master List}
+
+\paragraph{List Management}
+
+\begin{enumerate}
+	
+	\item{List View - Open\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar with solely text area and buttons. 
+	
+	Input: Click event on 'List' button.
+	
+	Output: Master List shown below the contents of the Sidebar.
+	
+	How test will be performed: Test will be performed by clicking the 'List' button located 
+	on the extension window and verifying that the Master List appears on the Sidebar. 
+	
+	\item{List View - Closed\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar with text area, buttons and Master List. 
+	
+	Input: Click event on 'List' button.
+	
+	Output: Master List disappears from the Sidebar.
+	
+	How test will be performed: Test will be performed by clicking the 'List' button located 
+	on the extension window and verifying that the Master List disappears on the Sidebar.  
+	
+\end{enumerate}
+
+\subsubsection{Note Deletion}
+
+\paragraph{Delete Note}
+
+\begin{enumerate}
+	
+	\item{Delete Note\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Text Area with a note saved to it. 
+	
+	Input: Click event on 'Delete Note' button.
+	
+	Output: Deletion confirmation message. 
+	
+	How test will be performed: Test will be performed by clicking the 'Delete Note' button 
+	and assuring that a confirmation message appears saying 'Are you sure you want to 
+	delete the note?', along with two choices, 'YES' or 'NO'.
+	
+	\item{Delete Confirm - YES\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: 'Delete Note' has been clicked prompting confirmation. 
+
+	Input: Click event on 'YES' button.
+	
+	Output: Confirmation of deletion message. 
+	
+	How test will be performed: Test will be performed by clicking the 'YES' button 
+	and assuring that a confirmation message appears saying 'Note Deleted' as well as 
+	affirming the note has been removed from Master List. 
+
+	\item{Delete Confirm - NO\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: 'Delete Note' has been clicked prompting confirmation. 
+	
+	Input: Click event on 'NO' button.
+	
+	Output: Confirmation message that note was not deleted. 
+	
+	How test will be performed: Test will be performed by clicking the 'NO' button 
+	and assuring that a confirmation message appears saying 'Note Was Not Deleted' as 
+	well as affirming the note remains in Master List. 	
+	
+\end{enumerate}
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\subsubsection{Area of Testing1}
+\subsubsection{Look and Feel}
 		
-\paragraph{Title for Test}
+\paragraph{Look}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{Sidebar Size\\}
 
-Type: 
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+Type: Manual, Dynamic
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+Initial State: Default Chrome browser window.
+
+Input: Extension icon click.
+
+Output: Sidebar will appear at the top right of the page.
+
+How test will be performed: Test will be performed by clicking the icon for the 
+MacSidenotes extension at the top right hand corner of the Google Chrome browser and 
+ensuring that the Sidebar does not take up more than SIDEBAR\_WIDTH		
+ 
+\end{enumerate}
+
+\subsubsection{Usability and Humanity Requirements}
+
+\paragraph{Usability \& Humanity}
+
+\begin{enumerate}
+
+\item{Communication - English\\}
+
+Type: Manual, Static, Dynamic
+
+Initial State: Varied
+
+Input: N/A
+
+Output: N/A
+
+How test will be performed: The test will be performed by activating every message to the 
+user and ensuring that they are easily understandable and in English. 
 
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Performance}
 
-...
+\paragraph{Speed}
+
+\begin{enumerate}
+	
+	\item{Extension Response\\}
+	
+	Type: Manual, Dynamic
+	
+	Initial State: Varied
+	
+	Input: User input.
+	
+	Output: Extension output.
+	
+	How test will be performed: This test will be performed by ensuring that any interaction 
+	the user makes with the extension takes less than RESPONSE\_TIME
+	
+\end{enumerate}
 
 \section{Tests for Proof of Concept}
 
-\subsection{Area of Testing1}
+\subsection{Sidebar}
 		
-\paragraph{Title for Test}
+\paragraph{Sidebar Opening}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{Sidebar Opening\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Functional, Dynamic, Manual
 					
-Initial State: 
+Initial State: Default Chrome browser
 					
-Input: 
+Input: Click event to the extension icon.
 					
-Output: 
+Output: Sidebar pops-up.
 					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+How test will be performed: This will be tested by clicking the extension icon and ensuring 
+that the sidebar opens. 
 
 \end{enumerate}
 
-\subsection{Area of Testing2}
+\subsection{Save Feature}
 
-...
+\paragraph{Local Save}
 
+\begin{enumerate}
+	
+	\item{Saving Note\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Opened Sidebar.
+	
+	Input: Click event on the 'Save' button.
+	
+	Output: Confirmation message appears ensuring that note has been save.
+	
+	How test will be performed: This will be tested by clicking the 'Save' button and 
+	ensuring that in the JS  of the project the note and the URL associated with that note 
+	is accessible in the localStorage of that user. 
+	
+\end{enumerate}
 	
 \section{Comparison to Existing Implementation}	
 	The project that MacSidenotes is derived from 
@@ -356,8 +549,47 @@ This is where you can place additional information.
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
+\begin{table}[!htbp]
+	\caption{\textbf{Table of Symbolic Parameters}} \label{Table}
+	
+	\begin{tabularx}{\textwidth}{p{5cm}X}
+		\toprule
+		\textbf{Symbolic Constants} & \textbf{Value}\\
+		\midrule
+		RESPONSE\_TIME & The maximum amount of time the system has to respond to a 
+		user interaction. This number is 2 seconds.  \\
+		SIDEBAR\_WIDTH & The maximum width that the Sidebar should be upon first 
+		opened. The maximum sidebar width is 30\% of a users full browser size.\\
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}	
+
 \subsection{Usability Survey Questions?}
 
-This is a section that would be appropriate for some teams.
+During October of 2016 Matthew asked his two roommates about the usability of the 
+product. At this point the product was at the proof of concept stage. \\
+\\
+Some of the questions asked were:\\
+\\
+What do you like about the product?\\
+What do you think could be improved?\\
+What features would you like to see added to the product?\\
+Would you use the product?\\
+\\
+Both roommates liked the product as-is due to the facility in which it can be used in 
+tandem with it's practicality. Some suggestion put forward included:\\
+\\
+Bullet Points\\
+Font Colours/Sizes/Effects\\
+Highlights\\
+The ability to add pictures\\
+Notification if page has note on it already\\
+Titles for notes\\
+\\
+Overall the meeting was very successful and produced many great ideas that could find 
+their way onto the final product. Both roommates said they would definitely use the 
+product. 
+
 
 \end{document}
