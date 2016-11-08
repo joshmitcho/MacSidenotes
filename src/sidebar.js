@@ -41,22 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-    // var boldText = document.getElementById('bold');
-    // // onClick's logic below:
-    // boldText.addEventListener('click', function() {
-        
-    //     document.getElementById('note').className = 'bold';
-
-    // });
-
-    // var italicText = document.getElementById('italic');
-    // // onClick's logic below:
-    // italicText.addEventListener('click', function() {
-        
-    //     document.getElementById('note').className = 'italic';
-
-    // });
-
+    
     //Allows links to be opened in a new tab
     window.addEventListener('click',function(e){
         if(e.target.href!==undefined){
@@ -71,12 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function deleteNote(){
 
     document.getElementById("deletePrompt").style.display = 'block';
-
-    // var myURL = getURL();
-    // document.getElementById("note").value = '';
-    // localStorage.removeItem(myURL);
-    // updateMasterList();
-    // customAlert("Note Deleted!", "2000");
 
     var itemDelete = document.getElementById('YES');
     // onClick's logic below:
@@ -136,11 +115,6 @@ function updateMasterList(){
 
     // This is the URL:      localStorage.key(i)                      
     // This is the textArea: localStorage.getItem(localStorage.key(i))
-
-    // var masterList = new Array();
-    // for (var i = 0; i < localStorage.length; i++){
-    //     masterList[i] = localStorage.key(i);    
-    // }
 
     for(var j=0; j < localStorage.length; j++){
         
@@ -221,28 +195,7 @@ function saveNote() {
     
 
     customAlertGood("Note Saved!", "2000");
-
-  
-    /* ------------- ATTEMPT AT USING CHROME API FOR STORAGE ------------- */
-
-  
- //  	// Save it using the Chrome extension storage API.
- //    chrome.storage.sync.set({'value': note}, function() {
- //        customAlert(note, "4000");
- //    });
-
- //    //var test = new Object;
- //    chrome.storage.sync.get('value', function(test){
- //    //  test = [ { 'value': note } ]
-    	
- //    	// for (first in test) break;
- //    	// customAlert(first, "4000");
- //    	// for (second in test);
- //    	// customAlert(second, "4000");
-    	
- //    	customAlert(JSON.stringify(test), "4000");
-	// });
-
+    
  }
 
 
