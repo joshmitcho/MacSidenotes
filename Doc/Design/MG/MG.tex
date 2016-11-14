@@ -29,12 +29,11 @@
 \newcommand{\mthemnum}{M\themnum}
 \newcommand{\mref}[1]{M\ref{#1}}
 
-\title{SE 3XA3: Software Requirements Specification\\Title of Project}
+\title{SE 3XA3: Module Guide\\MacSidenotes}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Team 4
+	\\ Josh Mitchell mitchjp3
+	\\ Matthew Shortt shorttmk
 }
 
 \date{\today}
@@ -55,8 +54,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Nov 13th & Rev0 & Complete Sections 1-7\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -132,11 +130,20 @@ adapted here is called design for
 change.
 
 \begin{description}
-\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-  hardware on which the software is running.
-\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-  initial input data.
-\item ...
+\item[\refstepcounter{acnum} \actheacnum \label{acTrigger}:] The trigger of 
+the save functionality.
+\item[\refstepcounter{acnum} \actheacnum \label{acUI}:] Appearance of the UI 
+(eg. buttons).
+\item[\refstepcounter{acnum} \actheacnum \label{acSave}:] Location \& format of 
+saved notes.
+\item[\refstepcounter{acnum} \actheacnum \label{acVisibility}:] Method of 
+determining Master List visibility.
+\item[\refstepcounter{acnum} \actheacnum \label{acUpdate}:] Method by which the 
+Master List is updated.
+\item[\refstepcounter{acnum} \actheacnum \label{acURL}:] Method by which the 
+page URL is fetched.
+\item[\refstepcounter{acnum} \actheacnum \label{acNotify}:] Method by which the 
+User is notified of successful Note saves/deletions.
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -153,7 +160,10 @@ decisions will be changed.
   (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be
   a source of input data external to the software.
-\item ...
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucChrome}:] The software will 
+  be run within a Chrome Extension environment.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] The goal of the 
+software: to save notes for the user for later viewing. 
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -165,9 +175,20 @@ actually be implemented.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{mSave}:] Save Note Module
+\item [\refstepcounter{mnum} \mthemnum \label{mVisibility}:] Master List 
+Visibility Module
+\item [\refstepcounter{mnum} \mthemnum \label{mUpdate}:] Update Master List 
+Module
+\item [\refstepcounter{mnum} \mthemnum \label{mURL}:] URL Fetch Module
+\item [\refstepcounter{mnum} \mthemnum \label{mTrigger}:] Save Trigger Module
+\item [\refstepcounter{mnum} \mthemnum \label{mNotify}:] Notify User Module
+\item [\refstepcounter{mnum} \mthemnum \label{mUI}:] UI Appearance Module
 \end{description}
 
+\textbf{M1} is handled by the Chrome Extension environment on which the 
+software is running. Once Chrome has been installed, the hardware is hidden 
+from the rest of the software.\\
 
 \begin{table}[h!]
 \centering
@@ -179,19 +200,16 @@ actually be implemented.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+\multirow{3}{0.3\textwidth}{Behaviour-Hiding Module} & Save Trigger Module\\
+& Notify User Module\\
+& UI Appearance Module\\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & {
+	Update Master List Module}\\
+& Save Note Module\\
+& URL Fetch Module\\
+& Master List Visibility Module\\
 \bottomrule
 
 \end{tabular}
@@ -231,47 +249,74 @@ selected.
 \item[Services:]Serves as a virtual hardware used by the rest of the
   system. This module provides the interface between the hardware and the
   software. So, the system can use it to display outputs or to accept inputs.
-\item[Implemented By:] OS
+\item[Implemented By:] OS, Chrome
 \end{description}
 
 \subsection{Behaviour-Hiding Module}
 
-\begin{description}
-\item[Secrets:]The contents of the required behaviours.
-\item[Services:]Includes programs that provide externally visible behaviour of
-  the system as specified in the software requirements specification (SRS)
-  documents. This module serves as a communication layer between the
-  hardware-hiding module and the software decision module. The programs in this
-  module will need to change if there are changes in the SRS.
-\item[Implemented By:] --
-\end{description}
-
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Save Trigger Module (\mref{mTrigger})}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
+\item[Secrets:]What causes the Note to be saved (button press vs closing the 
+sidebar).
+\item[Services:]Allows the call of the Save Note module \textbf{\mref{mSave}} 
+(specified below).
+\item[Implemented By:] MacSidenotes
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Notify User Module (\mref{mNotify})}
 
+\begin{description}
+\item[Secrets:]The format of the user notification message.
+\item[Services:]Allows the user to be alerted when they have successfully saved 
+or deleted a Note.
+\item[Implemented By:] MacSidenotes
+\end{description}
+
+\subsubsection{UI Appearance Module (\mref{mUI})}
+
+\begin{description}
+	\item[Secrets:]The format and appearance of the UI elements.
+	\item[Services:]Allows the user to have an uncluttered and pleasant 
+	experience with the software.
+	\item[Implemented By:] MacSidenotes
+\end{description}
 
 \subsection{Software Decision Module}
 
+\subsubsection{Update Master List Module (\mref{mUpdate})}
+
 \begin{description}
-\item[Secrets:] The design decision based on mathematical theorems, physical
-  facts, or programming considerations. The secrets of this module are
-  \emph{not} described in the SRS.
-\item[Services:] Includes data structure and algorithms used in the system that
-  do not provide direct interaction with the user. 
-  % Changes in these modules are more likely to be motivated by a desire to
-  % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+	\item[Secrets:]How the Notes are fetched from storage and added to the 
+	Master List.
+	\item[Services:]Loads all previously saved Notes into the Master List.
+	\item[Implemented By:] MacSidenotes
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Save Note Module (\mref{mSave})}
+
+\begin{description}
+	\item[Secrets:]The format and location of saved Notes.
+	\item[Services:]Allows the user to save notes for future viewing.
+	\item[Implemented By:] MacSidenotes
+\end{description}
+
+\subsubsection{URL Fetch Module (\mref{mURL})}
+
+\begin{description}
+	\item[Secrets:]The technique by which the URL is fetched.
+	\item[Services:]Allows each Note to be saved alongside an accompanying URL.
+	\item[Implemented By:] MacSidenotes
+\end{description}
+
+\subsubsection{Master List Visibility Module (\mref{mVisibility})}
+
+\begin{description}
+	\item[Secrets:]The technique by which the visibility of the Master List is 
+	determined.
+	\item[Services:]Allows the user to toggle the Master List on and off.
+	\item[Implemented By:] MacSidenotes
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -286,17 +331,26 @@ requirements and between the modules and the anticipated changes.
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+F.1 & \mref{mHH}\\
+F.2 & \mref{mUI}\\
+F.3 & \mref{mSave}, \mref{mTrigger}\\
+F.4 & \mref{mUI}, \mref{mVisibility}\\
+F.5 & \mref{mVisibility}\\
+NF.1 & \mref{mUI}\\
+NF.2 & \mref{mUI}\\
+NF.3 & \mref{mUI}\\
+NF.4 & \mref{mSave}, \mref{mUpdate}, \mref{mVisibility}\\
+NF.5 & \mref{mUI}\\
+NF.6 & \mref{mHH}, \mref{mUI}, \mref{mSave}, \mref{mUpdate}, 
+\mref{mVisibility}\\
+NF.7 & \mref{mHH}\\
+NF.8 & \mref{mHH}\\
+NF.9 & \mref{mHH}\\
+NF.10 & \mref{mSave}\\
+NF.11 & \mref{mHH}\\
+NF.12 & \mref{mUI}\\
+NF.13 & \mref{mUI}, \mref{mSave}\\
+NF.14 & \mref{mUI}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -309,18 +363,13 @@ R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+\acref{acTrigger} & \mref{mTrigger}\\
+\acref{acUI} & \mref{mUI}\\
+\acref{acSave} & \mref{mSave}\\
+\acref{acVisibility} & \mref{mVisibility}\\
+\acref{acUpdate} & \mref{mUpdate}\\
+\acref{acURL} & \mref{mURL}\\
+\acref{acNotify} & \mref{mNotify}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -342,12 +391,12 @@ because they use modules from the lower levels.
 
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.7\textwidth]{3XA3UsesRelationship.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
 
-%\section*{References}
+\section*{References}
 
 \bibliographystyle {plainnat}
 \bibliography {MG}
