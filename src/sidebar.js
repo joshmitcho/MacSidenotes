@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* Makes user confirm whether or not they want to delete note */
+
+/*! \fn function deleteNote()
+ *  \brief Makes user confirm whether or not they want to delete note.
+ */
 function deleteNote(){
 
     document.getElementById("deletePrompt").style.display = 'block';
@@ -99,6 +103,7 @@ function clickCounter(){
     numClicks += 1;
 }
 
+/** Show/Hides List on button click */
 function showList(){
 
     if(numClicks % 2 == 0){
@@ -174,8 +179,9 @@ function updateNote(){
 }
 
 
-//Note is saved in local storage
-//The id 'note' refers to the textarea where the user types their note
+/*Note is saved in local storage
+*The id 'note' refers to the textarea where the user types their note
+*/
 function saveNote() {
 
 	// Get text written in the textArea
@@ -209,8 +215,10 @@ function getURL() {
 	return pageURL;
 }
 
-
-/* Function to display messages for testing purposes as well as notifying user of saved changes*/
+/* Function to display messages for testing purposes as well as notifying user of possible deletion
+ * @param msg is the message that will be displayed on the screen
+ * @param duration is the duration of thime the message will be displayed on the screen
+ */
 function customAlert(msg,duration)
 {
  var styler = document.createElement("div");
@@ -223,7 +231,10 @@ function customAlert(msg,duration)
  document.body.appendChild(styler);
 }
 
-/* Function to display messages for testing purposes as well as notifying user of saved changes*/
+ /* Function to display messages for testing purposes as well as notifying user of saved changes
+     * @param msg is the message that will be displayed on the screen
+     * @param duration is the duration of thime the message will be displayed on the screen
+     */
 function customAlertGood(msg,duration)
 {
  var styler = document.createElement("div");
