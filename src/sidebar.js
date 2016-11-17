@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //reinitializing updateNum
     updateNum = 0;
 
-    customAlert(document.getElementById("note").cols, "2000"); 
+    //customAlert(document.getElementById("note").cols, "2000"); 
     
 
     //delete any saved empty notes
@@ -115,7 +115,7 @@ function showList(){
     }
     else{
         document.getElementById("show_hide_Table").style.display = 'none';
-        document.getElementById("note").cols = 50; // reverting back to original textarea size
+        document.getElementById("note").cols = 50;  // reverting back to original textarea size
     }
 
 }
