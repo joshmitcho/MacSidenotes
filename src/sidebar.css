@@ -1,6 +1,7 @@
 body {
 	font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
 	font-size: 100%;
+
 }
 
 /*
@@ -27,7 +28,7 @@ body {
 	background-color: green;
 	color: Silver;
 }
-*/
+
 
 
 .bold{
@@ -37,6 +38,7 @@ body {
 .italic{
 	font-style: italic;
 }
+*/
 
 #status {
 	/* avoid an excessively wide status text */
@@ -46,8 +48,9 @@ body {
 	max-width: 400px;
 }
 
-#test{
+#show_hide_Table{
 	display: none;
+	width: 100%;
 }
 
 #delete{
@@ -76,7 +79,7 @@ body {
 table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+	width: 50%; 
 }
 
 td, th {
@@ -89,3 +92,8 @@ tr:nth-child(even) {
 	background-color: #dddddd;
 }
 
+.ellipses {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
