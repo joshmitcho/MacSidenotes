@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNum = 0;
 
     //customAlert(document.getElementById("note").cols, "2000"); 
-    
+   
 
     //delete any saved empty notes
     deleteEmpty();
@@ -111,11 +111,12 @@ function showList(){
 
     if(numClicks % 2 == 0){
         document.getElementById("show_hide_Table").style.display = 'block';
-        document.getElementById("note").cols = 109; // setting textarea width to match table
+        document.getElementById("note").style.width = document.getElementById('show_hide_Table').clientWidth+"px"; // setting textarea width to match table
+        //customAlert(document.getElementById('show_hide_Table').clientWidth, "2000");
     }
     else{
         document.getElementById("show_hide_Table").style.display = 'none';
-        document.getElementById("note").cols = 50;  // reverting back to original textarea size
+        document.getElementById("note").style.width = "300px";  // reverting back to original textarea size
     }
 
 }
