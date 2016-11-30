@@ -139,12 +139,16 @@ function updateMasterList(){
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
 
-        var str = localStorage.key(j);
-    
-        cell1.innerHTML = str.link(localStorage.key(j));
+        var str = localStorage.key(j);	
+		
+	
+		var afterComma = str.substr(str.indexOf("://") + 3);
+
+		//string_to_display_to_user.link(URL_link_connects_to);
+        cell1.innerHTML = afterComma.link(str);
         cell2.innerHTML = localStorage.getItem(localStorage.key(j));
     }
-
+	
     updateNum++;
 
 }
@@ -188,11 +192,11 @@ function saveNote() {
 
     var myvar = localStorage[tabURL];
 
+	customAlertGood("Note Saved!", "2000");
+	
     // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
     updateNote();
-    
-
-    customAlertGood("Note Saved!", "2000");
+      
     
  }
 
