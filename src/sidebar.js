@@ -1,10 +1,14 @@
 var numClicks;
 var updateNum;
+var deleteOccur;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
 
     //reinitializing updateNum
     updateNum = 0;
+
+    //initilaizing deleteOccur
+    deleteOccur = false;
 
     //customAlert(document.getElementById("note").cols, "2000"); 
    
@@ -67,13 +71,16 @@ function deleteNote(){
     var itemDelete = document.getElementById('YES');
     // onClick's logic below:
     itemDelete.addEventListener('click', function() {
+
+        deleteOccur = true;
         
         document.getElementById("deletePrompt").style.display = 'none';
 
         var myURL = getURL();
         document.getElementById("note").value = '';
         localStorage.removeItem(myURL);
-        updateMasterList();
+        //updateMasterList();
+        updateNote();
         customAlert("Note Deleted!", "2000");        
 
     });
@@ -111,12 +118,16 @@ function showList(){
 
     if(numClicks % 2 == 0){
         document.getElementById("show_hide_Table").style.display = 'block';
-        document.getElementById("note").style.width = document.getElementById('show_hide_Table').clientWidth+"px"; // setting textarea width to match table
+        //document.getElementById("window").className = "bumped";
+
+
+        //document.getElementById("note").style.width = document.getElementById('show_hide_Table').clientWidth+"px"; // setting textarea width to match table
         //customAlert(document.getElementById('show_hide_Table').clientWidth, "2000");
     }
     else{
         document.getElementById("show_hide_Table").style.display = 'none';
-        document.getElementById("note").style.width = "300px";  // reverting back to original textarea size
+        //document.getElementById("window").className = "";
+        //document.getElementById("note").style.width = "300px";  // reverting back to original textarea size
     }
 
 }
@@ -127,13 +138,23 @@ function updateMasterList(){
     // This is the URL:      localStorage.key(i)                      
     // This is the textArea: localStorage.getItem(localStorage.key(i))
 
+    customAlert(document.getElementById("table").rows.length, "4000");
+
     for(var j=0; j < localStorage.length; j++){
         
         var table = document.getElementById("table");
+        //customAlert(document.getElementById("table").rows.length, "2000");
 
-        if(updateNum != 0 && j != (localStorage.length - 1)) {
+
+        //if new note is introduced
+        if(updateNum != 0 && j != (localStorage.length - 1) && !deleteOccur) {
             table.deleteRow(1);
         }
+
+        /*if new note is introduced
+        if(updateNum != 0 && deleteOccur) {
+            table.deleteRow(1);
+        }*/
         
         var row = table.insertRow(-1);
         var cell1 = row.insertCell(0);
@@ -207,7 +228,7 @@ function saveNote() {
     // save what is currently written in the note to localStorage and associate it with the current URL
     localStorage[tabURL] = note;
 
-    var myvar = localStorage[tabURL];
+    //var myvar = localStorage[tabURL];
 
 	customAlertGood("Note Saved!", "2000");
 
