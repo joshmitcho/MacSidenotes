@@ -131,7 +131,7 @@ function updateMasterList(){
         
         var table = document.getElementById("table");
 
-        if(updateNum != 0) {
+        if(updateNum != 0 && j != (localStorage.length - 1)) {
             table.deleteRow(1);
         }
         
@@ -141,16 +141,33 @@ function updateMasterList(){
 
         var str = localStorage.key(j);	
 		
-	
-		var afterComma = str.substr(str.indexOf("://") + 3);
+		var groomedStr = str.substr(str.indexOf("://") + 3);
+		
+		groomedStr = groomedStr.replace("www.", "");
+		if (groomedStr.substr(groomedStr.length - 1, groomedStr.length) == '/'){
+			groomedStr = groomedStr.substr(0, groomedStr.length - 1);
+		}
+		
 
+		if (groomedStr.length >= 25){
+			groomedStr = groomedStr.substr(0, 25);
+			groomedStr += "...";
+		}
+		
 		//string_to_display_to_user.link(URL_link_connects_to);
-        cell1.innerHTML = afterComma.link(str);
-        cell2.innerHTML = localStorage.getItem(localStorage.key(j));
+        cell1.innerHTML = groomedStr.link(str);
+		
+		var groomedNote = localStorage.getItem(localStorage.key(j));
+		
+		if (groomedNote.length >= 25){
+			groomedNote = groomedNote.substr(0, 25);
+			groomedNote += "...";
+		}
+		
+        cell2.innerHTML = groomedNote;
     }
 	
     updateNum++;
-
 }
 
 /* This function brings up the note referenced to the current website  */
@@ -169,7 +186,7 @@ function updateNote(){
         }
         
     });
-
+	
     updateMasterList();
 
 }
@@ -193,10 +210,9 @@ function saveNote() {
     var myvar = localStorage[tabURL];
 
 	customAlertGood("Note Saved!", "2000");
-	
+
     // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
     updateNote();
-      
     
  }
 
