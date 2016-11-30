@@ -129,34 +129,20 @@ function updateMasterList(){
 
     for(var j=0; j < localStorage.length; j++){
         
-        if(updateNum == 0) {
-            
-            var table = document.getElementById("table");
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
+        var table = document.getElementById("table");
 
-            var str = localStorage.key(j);
-    
-            cell1.innerHTML = str.link(localStorage.key(j));
-            cell2.innerHTML = localStorage.getItem(localStorage.key(j));
-        
-        }
-        else{
-
-            var table = document.getElementById("table");
+        if(updateNum != 0) {
             table.deleteRow(1);
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-
-            var str = localStorage.key(j);
-    
-            cell1.innerHTML = str.link(localStorage.key(j));
-            cell2.innerHTML = localStorage.getItem(localStorage.key(j));
-
         }
+        
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
 
+        var str = localStorage.key(j);
+    
+        cell1.innerHTML = str.link(localStorage.key(j));
+        cell2.innerHTML = localStorage.getItem(localStorage.key(j));
     }
 
     updateNum++;
