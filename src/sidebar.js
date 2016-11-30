@@ -159,7 +159,7 @@ function deleteMasterList(){
 
 function populateMasterList(){
 
-    
+
     // This is the URL:      localStorage.key(i)                      
     // This is the textArea: localStorage.getItem(localStorage.key(i))    
 
@@ -179,8 +179,8 @@ function populateMasterList(){
         }
         
 
-        if (groomedStr.length >= 25){
-            groomedStr = groomedStr.substr(0, 25);
+        if (groomedStr.length >= 20){
+            groomedStr = groomedStr.substr(0, 20);
             groomedStr += "...";
         }
         
@@ -189,8 +189,8 @@ function populateMasterList(){
         
         var groomedNote = localStorage.getItem(localStorage.key(j));
         
-        if (groomedNote.length >= 25){
-            groomedNote = groomedNote.substr(0, 25);
+        if (groomedNote.length >= 20){
+            groomedNote = groomedNote.substr(0, 20);
             groomedNote += "...";
         }
         
