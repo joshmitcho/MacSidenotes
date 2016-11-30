@@ -1,8 +1,11 @@
 var numClicks;
 var updateNum;
 var deleteOccur;
+var table;
 //This block is necessary because Chrome extensions don't allow standard onClick functionality
 document.addEventListener('DOMContentLoaded', function() {
+
+    table = document.getElementById("tbody");
 
     //reinitializing updateNum
     updateNum = 0;
@@ -135,61 +138,68 @@ function showList(){
 /* Funciton updates the master list containing all notes */
 function updateMasterList(){
 
-    // This is the URL:      localStorage.key(i)                      
-    // This is the textArea: localStorage.getItem(localStorage.key(i))
+    deleteMasterList();
 
-    customAlert(document.getElementById("table").rows.length, "4000");
+	populateMasterList();
+
+}
+
+function deleteMasterList(){
+
+
+    var rowLength = document.getElementById("tbody").rows.length;
+
+    
+    for(var i=0; i < rowLength; i++){
+        
+        table.deleteRow(0);
+    }
+    
+}
+
+function populateMasterList(){
+
+    
+    // This is the URL:      localStorage.key(i)                      
+    // This is the textArea: localStorage.getItem(localStorage.key(i))    
 
     for(var j=0; j < localStorage.length; j++){
-        
-        var table = document.getElementById("table");
-        //customAlert(document.getElementById("table").rows.length, "2000");
-
-
-        //if new note is introduced
-        if(updateNum != 0 && j != (localStorage.length - 1) && !deleteOccur) {
-            table.deleteRow(1);
-        }
-
-        /*if new note is introduced
-        if(updateNum != 0 && deleteOccur) {
-            table.deleteRow(1);
-        }*/
-        
+    
         var row = table.insertRow(-1);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
 
-        var str = localStorage.key(j);	
-		
-		var groomedStr = str.substr(str.indexOf("://") + 3);
-		
-		groomedStr = groomedStr.replace("www.", "");
-		if (groomedStr.substr(groomedStr.length - 1, groomedStr.length) == '/'){
-			groomedStr = groomedStr.substr(0, groomedStr.length - 1);
-		}
-		
+        var str = localStorage.key(j);  
+        
+        var groomedStr = str.substr(str.indexOf("://") + 3);
+        
+        groomedStr = groomedStr.replace("www.", "");
+        if (groomedStr.substr(groomedStr.length - 1, groomedStr.length) == '/'){
+            groomedStr = groomedStr.substr(0, groomedStr.length - 1);
+        }
+        
 
-		if (groomedStr.length >= 25){
-			groomedStr = groomedStr.substr(0, 25);
-			groomedStr += "...";
-		}
-		
-		//string_to_display_to_user.link(URL_link_connects_to);
+        if (groomedStr.length >= 25){
+            groomedStr = groomedStr.substr(0, 25);
+            groomedStr += "...";
+        }
+        
+        //string_to_display_to_user.link(URL_link_connects_to);
         cell1.innerHTML = groomedStr.link(str);
-		
-		var groomedNote = localStorage.getItem(localStorage.key(j));
-		
-		if (groomedNote.length >= 25){
-			groomedNote = groomedNote.substr(0, 25);
-			groomedNote += "...";
-		}
-		
+        
+        var groomedNote = localStorage.getItem(localStorage.key(j));
+        
+        if (groomedNote.length >= 25){
+            groomedNote = groomedNote.substr(0, 25);
+            groomedNote += "...";
+        }
+        
         cell2.innerHTML = groomedNote;
     }
-	
-    updateNum++;
+    
 }
+
+
 
 /* This function brings up the note referenced to the current website  */
 function updateNote(){
