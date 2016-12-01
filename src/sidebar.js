@@ -84,7 +84,8 @@ function deleteNote(){
         localStorage.removeItem(myURL);
         //updateMasterList();
         updateNote();
-        customAlert("Note Deleted!", "2000");        
+        //customAlert("Note Deleted!", "2000");
+		showNotice("deleteNotice");        
 
     });
 
@@ -94,7 +95,7 @@ function deleteNote(){
 
         document.getElementById("deletePrompt").style.display = 'none';
         
-        customAlert("Note Was Not Deleted", "2000");        
+        //customAlert("Note Was Not Deleted", "2000");        
 
     });
 
@@ -231,6 +232,8 @@ function saveNote() {
 	// Get text written in the textArea
     var note = document.getElementById("note").value;
 
+	if (note != ""){
+	
     // Get the current URL
     var tabURL = getURL();
 
@@ -240,11 +243,13 @@ function saveNote() {
 
     //var myvar = localStorage[tabURL];
 
-	customAlertGood("Note Saved!", "2000");
+	//customAlertGood("Note Saved!", "2000");
+	
+	showNotice("saveNotice");
 
     // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
     updateNote();
-    
+    }
  }
 
 
@@ -264,14 +269,15 @@ function getURL() {
  */
 function customAlert(msg,duration)
 {
- var styler = document.createElement("div");
-  styler.setAttribute("style","border: solid 2px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver");
- styler.innerHTML = "<p align='center'>"+msg+"<p>";
- setTimeout(function()
- {
-   styler.parentNode.removeChild(styler);
- },duration);
- document.body.appendChild(styler);
+	var styler = document.createElement("div");
+	styler.setAttribute("id","alertBad");
+	styler.className
+	styler.innerHTML = "<p align='center'>"+msg+"<p>";
+	setTimeout(function()
+	{
+		styler.parentNode.removeChild(styler);
+	},duration);
+	document.body.appendChild(styler);
 }
 
  /* Function to display messages for testing purposes as well as notifying user of saved changes
@@ -280,13 +286,22 @@ function customAlert(msg,duration)
      */
 function customAlertGood(msg,duration)
 {
- var styler = document.createElement("div");
-  styler.setAttribute("style","border: solid 2px black;width:auto;height:auto;top:50%;left:40%;background-color:green;color:Silver");
- styler.innerHTML = "<p align='center'>"+msg+"<p>";
- setTimeout(function()
- {
-   styler.parentNode.removeChild(styler);
- },duration);
- document.body.appendChild(styler);
+	var styler = document.createElement("div");
+	styler.setAttribute("id","alertGood");
+	styler.innerHTML = "<p align='center'>"+msg+"<p>";
+	setTimeout(function()
+	{
+		styler.parentNode.removeChild(styler);
+	},duration);
+	document.body.appendChild(styler);
+	
 }
- 
+ function showNotice(which)
+{
+	notice = document.getElementById(which);
+	notice.style.display = "inline-block";
+	setTimeout(function()
+	{
+		notice.style.display = "none";
+	},1500);		
+}

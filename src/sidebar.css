@@ -49,6 +49,99 @@ body {
 }
 */
 
+#instructions {
+	display: inline-block;
+	margin: .75em 0.25em 1.5em;
+}
+
+#saveNotice {
+	background-color: #17AF69; /* Green */
+}
+
+#deleteNotice {
+	background-color: #B9272E; /* Red */
+}
+
+.button.notice {
+	display: none;
+	border-radius: 7px;
+	border: none;
+	color: white;
+	background-color: #4b4b4b;
+	text-align: center;
+	font-size: 100%;
+	padding: .75em;
+	width: 7em;
+	transition: all 0.5s;
+	position: relative;
+	float: right;
+	margin-left: 0.5em;
+}
+
+textarea {
+	resize: none;
+}
+
+#alertGood {
+	border: solid 2px black;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 40%;
+	background-color: green;
+	color: Silver;
+}
+#alertBad {
+	border: solid 2px Red;
+	width:auto;
+	height:auto;
+	top:50%;
+	left:40%;
+	background-color:#444;
+	color:Silver;
+}
+
+.button:not(.notice) {
+	display: inline-block;
+	border-radius: 7px;
+	border: none;
+	color: white;
+	background-color: #4b4b4b;
+	text-align: center;
+	font-size: 100%;
+	padding: .75em;
+	width: 10em;
+	transition: all 0.5s;
+	cursor: pointer;   
+	display: inline-block;
+	position: relative;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.button:hover:not(.notice):hover  {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#save {
+    background-color: #17AF69; /* Green */
+}
+
+#delete {
+    background-color: #B9272E; /* Red */
+}
+
+#delete.button {
+	margin-left: 1.5em;
+}
+
+#list {
+    background-color: #07CDE2; /* Blue */
+	float: right;
+}
+
+
 #note{
 	width: 40em;
 	height: 15em;
@@ -71,29 +164,25 @@ body {
 	margin: 0 auto;
 }
 
-#list{
-	float: right;
-}
-
 /* CSS for RED delete confirmation window */
 #deletePrompt{
 	display: none;
 	text-align: center;
 	clear: both;
-	border: solid 2px Silver;
+	border: none;
 	width: auto;
 	height: auto;
 	top: 50%;
 	left: 40%;
-	background-color: red;
-	color: Silver;
+	color: black;
 }
 
 /* CSS for list table */
-table{
+#table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
 	width: 100%; 
+	margin-top: 0.5em;
 }
 
 td, th {
@@ -101,6 +190,10 @@ td, th {
     text-align: left;
     padding: 8px;
 }	
+
+th {
+	background-color: #dddddd
+}
 
 tr:nth-child(even) {
 	background-color: #dddddd;

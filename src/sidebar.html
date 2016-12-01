@@ -10,6 +10,7 @@
 		
 		<!-- Core CSS -->
 		<link href="sidebar.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<!-- Core JS -->
 		<script src="sidebar.js"></script>
 	</head>
@@ -24,23 +25,22 @@
         <div id="window">
             
 
-			<p>Enter your note below</p>
-
+			<div id="instructions">Enter your note below</div>
+			<div id="saveNotice" class="button notice">Note Saved</div>
+			<div id="deleteNotice" class="button notice">Note Deleted</div>
 			
-
 			<textarea id="note"></textarea>
 			
-			<button id="save">Save Note</button>
-			<button id="delete">Delete Note</button>
-			<button id="list">List</button>
+			<button id="save" class="button"><i class="material-icons">save</i></button>
+			<button id="delete" class="button"><i class="material-icons">delete_forever</i></button>
+			<button id="list" class="button"><i class="material-icons">list</i></button>
 
 			<div id="deletePrompt">
-				<p>Are you sure you want to delete the note?</p>
-				<button id="YES">YES</button>
-				<button id="NO">NO</button>
+				<p>Are you sure you want to delete the current note?</p>
+				<button id="YES" class="button"><i class="material-icons">check_circle</i></button>
+				<button id="NO" class="button"><i class="material-icons">undo</i></button>
 				<p></p>
 			</div>
-
 			
 			<div id="show_hide_Table" >
 				<table id="table">
