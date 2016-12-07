@@ -1,7 +1,6 @@
-/** @private */ var numClicks;
-/** @private */ var updateNum;
-/** @private */ var table;
-/** @private */ var notifyTime = 1500;
+/** @private click counter for list button, increment on keyboard click*/ var numClicks;
+/** @private html/css table that is being displayed/hidden by js*/ var table;
+/** @private time 'Note Saved'/'Note Deleted' messages are displayed for*/ var notifyTime = 1500;
 
 
 /**
@@ -10,13 +9,8 @@
   */
 document.addEventListener('DOMContentLoaded', function() {
 
+    // table the user will see that contains the notes they have saved and corresponding URLs
     table = document.getElementById("tbody");
-
-    //reinitializing updateNum
-    updateNum = 0;
-    
-    //delete any saved empty notes
-    deleteEmpty();
 
     // load note associated with current tab
     updateNote();    
@@ -51,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     
-    //Allows links to be opened in a new tab
+    // Allows links to be opened in a new tab
     window.addEventListener('click',function(e){
         if(e.target.href!==undefined){
             chrome.tabs.create({url:e.target.href})
@@ -67,49 +61,44 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function deleteNote(){
 
-    document.getElementById("deletePrompt").style.display = 'block';
-
-    var itemDelete = document.getElementById('YES');
-    // onClick's logic below:
-    itemDelete.addEventListener('click', function() {
-
-
-        document.getElementById("deletePrompt").style.display = 'none';
-
-        var myURL = getURL();
-        document.getElementById("note").value = '';
-        localStorage.removeItem(myURL);
-        
-        updateNote();
+    // Exception of if they call delete note on a non-existent note, button will not trigger any action
+    if(document.getElementById("note").value != ''){
        
-		showNotice("deleteNotice");        
+        document.getElementById("deletePrompt").style.display = 'block';
 
-    });
+        var itemDelete = document.getElementById('YES');
+        // onClick's logic below:
+        itemDelete.addEventListener('click', function() {
 
-    var itemSave = document.getElementById('NO');
-    
-    // onClick's logic below:
-    itemSave.addEventListener('click', function() {
 
-        document.getElementById("deletePrompt").style.display = 'none';
-        
+            document.getElementById("deletePrompt").style.display = 'none';
+
+            var myURL = getURL();
+           
+                document.getElementById("note").value = '';
+                localStorage.removeItem(myURL);
+                
+                updateNote();
                
+                // popup notifying the user that a note has been deleted
+                showNotice("deleteNotice"); 
 
-    });
+            
+                   
 
-}
+        });
 
-/**
-  * Function deletes any empty notes that are in the master list.
-  *
-  */
-function deleteEmpty(){
+        var itemSave = document.getElementById('NO');
+        
+        // onClick's logic below:
+        itemSave.addEventListener('click', function() {
 
-    for(var cnt = 0; cnt < localStorage.length; cnt++){
-        if(localStorage.getItem(localStorage.key(cnt)) == ''){
-            localStorage.removeItem(localStorage.key(cnt));   
-        }
-    }
+            // closing the box prompting the user for confirmation of deletion
+            document.getElementById("deletePrompt").style.display = 'none';
+           
+        });
+
+    }   
 
 }
 
@@ -122,30 +111,28 @@ function clickCounter(){
 }
 
 /** 
-  * Shows/Hides the master list on button click of 'list'
+  * Shows/Hides the master list on user keyboard click of 'list' button.
   *
   */
 function showList(){
 
     if(numClicks % 2 == 0){
+        // diplaying the master list of notes to the user
         document.getElementById("show_hide_Table").style.display = 'block';
-        //document.getElementById("window").className = "bumped";
-
-
-        //document.getElementById("note").style.width = document.getElementById('show_hide_Table').clientWidth+"px"; // setting textarea width to match table
-        //customAlert(document.getElementById('show_hide_Table').clientWidth, "2000");
     }
     else{
+        // hiding the master list of notes from users screen
         document.getElementById("show_hide_Table").style.display = 'none';
-        //document.getElementById("window").className = "";
-        //document.getElementById("note").style.width = "300px";  // reverting back to original textarea size
     }
 
 }
 
 /**
-  * Updates the master list containing all notes.
-  *
+  * Updates the master list containing all notes and the url associated to them. 
+    Deletes the table previously shown to user and replaces it with the table with 
+    the table that contains the changes the user made. Does so in real time if list
+    is opened.
+  * 
   */
 function updateMasterList(){
 
@@ -156,7 +143,8 @@ function updateMasterList(){
 }
 
 /**
-  * Deletes the current master list from the display table on the extension.
+  * Deletes the current table that is diplayed to the user.
+    This table contained the contents of the master list.
   *
   */
 function deleteMasterList(){
@@ -174,7 +162,9 @@ function deleteMasterList(){
 
 
 /**
-  * Populates the master list with the most recent updates notes and links to notes while also grooming the output the user sees for aesthetic pleasure.
+  * Populates the displayed table with the updated contents of master list,
+    which contains the most recently updates notes and links to notes,
+    while also grooming the output the user sees for aesthetic purposes.
   * 
   */
 function populateMasterList(){
@@ -222,7 +212,8 @@ function populateMasterList(){
 
 
 /**
-  * Populates the extensions text area with the note referenced to for the current website.
+  * Populates the extensions 'text area', the place on the extension where the
+    user inputs note, with the note that is associated with the current website.
   * 
   */
 function updateNote(){
@@ -258,18 +249,18 @@ function saveNote() {
     //Disallows empty notes to be saved
 	if (note != ""){
 	
-    // Get the current URL
-    var tabURL = getURL();
+        // Get the current URL
+        var tabURL = getURL();
 
-    
-    // save what is currently written in the note to localStorage and associate it with the current URL
-    localStorage[tabURL] = note;
+        
+        // save what is currently written in the note to localStorage and associate it with the current URL
+        localStorage[tabURL] = note;
 
-	//Displays to the user that the note has been saved
-	showNotice("saveNotice");
+    	//Displays to the user that the note has been saved
+    	showNotice("saveNotice");
 
-    // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
-    updateNote();
+        // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
+        updateNote();
     }
  }
 
@@ -277,7 +268,7 @@ function saveNote() {
 /** 
   * Grabs the URL of the current tab and returns it. 
   *
-  * @return {URL} pageURL The url of the current tab   
+  * @return {string} pageURL - The url of the current tab   
   */
 function getURL() {
 	
@@ -288,10 +279,10 @@ function getURL() {
 }
 
 /** 
-  * Display messages for testing purposes as well as notifying user of possible deletion.
+  * Display messages for testing purposes.
   *
-  * @param {message} msg The message that will be displayed on the screen.
-  * @param {duration} duration The duration of time the message will be displayed on the screen.
+  * @param {message} string The message that will be displayed on the screen.
+  * @param {duration} string The duration of time the message will be displayed on the screen.
   */
 function customAlert(msg,duration)
 {
@@ -307,10 +298,10 @@ function customAlert(msg,duration)
 }
 
   /** 
-    * Display messages for testing purposes as well as notifying user of saved changes.
+    * Display messages for testing purposes.
     *
-    * @param {message} msg The message that will be displayed on the screen.
-    * @param {duration} duration The duration of time the message will be displayed on the screen.
+    * @param {message} string The message that will be displayed on the screen.
+    * @param {duration} string The duration of time the message will be displayed on the screen.
     */
 function customAlertGood(msg,duration)
 {
@@ -325,11 +316,10 @@ function customAlertGood(msg,duration)
 	
 }
 
-
 /** 
   * Shows notification message to inform user of a saved or deleted note.
   * 
-  * @param {action} which Save note or Delete note.
+  * @param {string} which Save note or Delete note.
   */
  function showNotice(which)
 {
