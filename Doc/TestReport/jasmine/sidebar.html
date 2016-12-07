@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "sidebar.html".
+ -->
+<html>
+	<head>
+		<title>MacSidenotes Extension's Popup</title>
+		
+		<!-- Core CSS -->
+		<link href="sidebar.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<!-- Core JS -->
+		<script src="sidebar.js"></script>
+		
+		<meta charset="utf-8">
+
+		<link rel="shortcut icon" type="image/png" href="lib/jasmine-2.5.2/jasmine_favicon.png">
+		<link rel="stylesheet" href="lib/jasmine-2.5.2/jasmine.css">
+
+		<!--<object type="text/html" data="../../../src/sidebar.html"></object>-->
+  
+		<script src="lib/jasmine-2.5.2/jasmine.js"></script>
+		<script src="lib/jasmine-2.5.2/jasmine-html.js"></script>
+		<script src="lib/jasmine-2.5.2/boot.js"></script>
+
+		<!-- include source files here... -->
+		<script src="../../../src/sidebar.js"></script>
+  
+		<!-- include spec files here... -->
+		<script src="SidebarSpec.js"></script>
+		
+	</head>
+	<body>
+
+		<!--This would be an option if we wanted a title for each note -->
+	
+		<!--
+		<p><label for="title">Title</label><br />
+        <input type="text" id="title" name="title" size="50" value="" /></p>
+        -->
+        <div id="window">
+            
+
+			<div id="instructions">Enter your note below</div>
+			<div id="saveNotice" class="button notice">Note Saved</div>
+			<div id="deleteNotice" class="button notice">Note Deleted</div>
+			
+			<textarea id="note"></textarea>
+			
+			<button id="save" class="button"><i class="material-icons">save</i></button>
+			<button id="delete" class="button"><i class="material-icons">delete_forever</i></button>
+			<button id="list" class="button"><i class="material-icons">list</i></button>
+
+			<div id="deletePrompt">
+				<p>Are you sure you want to delete the current note?</p>
+				<button id="YES" class="button"><i class="material-icons">check_circle</i></button>
+				<button id="NO" class="button"><i class="material-icons">undo</i></button>
+				<p></p>
+			</div>
+			
+			<div id="show_hide_Table" >
+				<table id="table">
+					<thead>
+		  				<tr>
+					    	<th>Website</th>
+					    	<th>Note</th>
+			  			</tr>
+		  			</thead>
+		  			<tbody id="tbody">
+		  			</tbody>
+		  		</table>
+		 	</div>
+
+		</div>
+
+	</body>
+</html>
+
+

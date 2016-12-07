@@ -3,6 +3,7 @@
 /** @private */ var table;
 /** @private */ var notifyTime = 1500;
 
+
 /**
   * This block is necessary because Chrome extensions don't allow standard onClick functionality. In turn is populated with listeners that react to user input.
   *
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //reinitializing updateNum
     updateNum = 0;
     
-
     //delete any saved empty notes
     deleteEmpty();
 
@@ -60,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 });
-
-
 
 /**
  *  Makes user confirm whether or not they want to delete note. Delete note is called when 'delete' button is pressed.
@@ -282,6 +280,7 @@ function saveNote() {
   * @return {URL} pageURL The url of the current tab   
   */
 function getURL() {
+	
 	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
     	pageURL = tabs[0].url;
 	});
