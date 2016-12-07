@@ -15,28 +15,8 @@ describe("MacSidenotes", function() {
 		expect(numClicks).toEqual(oldClicks + 3);
 	
 	});
-  /*
-	it("should add a note", function() {
-		pageURL = "";
-		chrome = {
-			tabs : {
-				query: function (){},
-				url: "5"
-			}
-		};		
-		
-		expect(pageURL).toEqual("5");
-		
-		document.getElementById("note").value = "Test Note";
-	  
-		var localStorage = ["foo", "bar", "baz"];
 
-		saveNote();
-	  
-		expect(localStorage).toContain("bar");
-    });
-  */
-	it("should empty the list", function() {
+	it("should empty the Master List", function() {
     
 		var addedRows = 5;
 		
@@ -52,16 +32,37 @@ describe("MacSidenotes", function() {
 		deleteMasterList();
 		rows = table.rows.length;
 		expect(rows).toEqual(0);
-	
-	
-	
+		
 	});
 	
-	it("should show notice", function() {
+	it("should show the Note Saved and Note Deleted notices", function() {
     
+		var save = document.getElementById("saveNotice");
+		var del = document.getElementById("deleteNotice");
 		
-		expect(1).toEqual(0);
+		expect(save.style.display).toEqual("");
+		expect(del.style.display).toEqual("");
+
+		showNotice("saveNotice");
+		expect(save.style.display).toEqual("inline-block");
+		showNotice("deleteNotice");
+		expect(del.style.display).toEqual("inline-block");
 
 	});
+	
+	it("should reveal and hide the Master List", function() {
+		
+		numClicks = 0;
+		var table = document.getElementById("show_hide_Table")
+		
+		expect(table.style.display).toEqual("");
+		showList();
+		clickCounter();
+		expect(table.style.display).toEqual("block");
+		showList();
+		clickCounter();
+		expect(table.style.display).toEqual("none");
+
+	});	
   
 });

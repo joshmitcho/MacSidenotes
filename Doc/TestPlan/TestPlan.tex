@@ -3,6 +3,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{color}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -38,7 +40,8 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Oct 30th, 2016 & 0.5 & Sections 2, 4, 5, 6 Added\\
-%Date 2 & 1.1 & Notes\\
+\textcolor{blue}{Dec 7th} & \textcolor{blue}{1.0} & \textcolor{blue}{Revision 1 
+Modifications}\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -136,10 +139,11 @@ tests on MacSidenotes:
 
 Given the UI-driven nature of this project, much of the automated testing 
 will be focused on user interaction, which can be simulated with our Testing 
-Tool QUnit.
+Tool \sout{QUnit}\textcolor{blue}{ Jasmine}.
 \subsubsection{Whitebox Testing}
-Values held in the program will be examined before and after a 
-simulated click or keyboard event, to ensure proper updating of system 
+Values held in the program will be examined before and after \sout{a 
+simulated click or keyboard event} \textcolor{blue}{internal functions are 
+called}, to ensure proper updating of system 
 variables. These tests are Whitebox or Structural tests, as they require 
 knowledge of variable names and the "under-the-hood" storage architecture used 
 by the program.
@@ -151,10 +155,11 @@ knowing the internal structure of the program, just the knowledge that the
 
 \subsection{Testing Tools}
 
-QUnit will be the dominant tool for testing the JavaScript functionality of the 
-extension. It facilitates automated unit testing, assertions, synchronous and 
-asynchronous callbacks as well as testing user actions through simulated mouse 
-clicks and keyboard input.
+\sout{QUnit} \textcolor{blue}{Jasmine} will be the dominant tool for testing 
+the JavaScript functionality of the 
+extension. It facilitates automated unit testing, assertions, and synchronous 
+and asynchronous callbacks \sout{ as well as testing user actions through 
+simulated mouse clicks and keyboard input}.
 
 \subsection{Testing Schedule}
 		
@@ -410,7 +415,8 @@ user and ensuring that they are easily understandable and in English.
 	Output: Extension output.
 	
 	How test will be performed: This test will be performed by ensuring that any interaction 
-	the user makes with the extension takes less than RESPONSE\_TIME
+	the user makes with the extension \sout{takes less than RESPONSE\_TIME} 
+	\textcolor{blue}{is not too slow as to disrupt their usual flow.}
 	
 \end{enumerate}
 
@@ -469,66 +475,91 @@ that the sidebar opens.
 	system-level description of its abilities and a 
 	\href{https://github.com/sidenotes/sidenotes/blob/master/images/Sidenotes-Screenflow.gif}
 	{gif} displaying a user's interaction with the extension.
-\section{Unit Testing Plan}
+\section{Automated Unit Testing Plan}
 		
 \subsection{Unit testing of internal functions}
 
 Each of the below tests requires its own driver. None require a stub.
+\textcolor{blue}{Some previously planned automated unit test cases had to be 
+removed, as the testing framework does not simulate the calls to the Chrome 
+extension API. More unit tests that Jasmine can execute were added to 
+compensate.}
 
 \subsubsection{deleteNote}
-	deleteNote removes the note associated with the URL the user is currently 
+	\sout{deleteNote removes the note associated with the URL the user is 
+	currently 
 	viewing from the master list of notes.\\
 	\textbf{To test:} Simulate a click of the Delete Note button with QUnit, 
 	then search through Chrome's local storage to ensure no notes exist with a 
 	URL that matches the URL the "user" was viewing when deleting that note. If 
-	there is no match, the test is successful.
+	there is no match, the test is successful.}
 \subsubsection{deleteEmpty}
-	deleteEmpty removes all empty notes from the master list.\\
+	\sout{deleteEmpty removes all empty notes from the master list.\\
 	\textbf{To test:} Call deleteEmpty, search through local storage to ensure 
-	no empty notes exist. If no empty notes are found, the test is successful
+	no empty notes exist. If no empty notes are found, the test is successful}
 \subsubsection{clickCounter}
 	clickCounter increments numClicks, which counts the number of times the 
 	List button has been clicked.\\
-	\textbf{To test:} Check the value of numClicks, simulate a click of the 
-	List button, 
+	\textbf{To test:} Check the value of numClicks, \sout{simulate a click of 
+	the 
+	List button, }\textcolor{blue}{callClickCounter() and}
 	check to see if numClicks has incremented by 1. If so, the test is 
 	successful.
 \subsubsection{showList}
 	showList displays the master list of notes to the user. It also removes it 
 	from the screen if it is already present.\\
-	\textbf{To test:} Simulate a click of the List button, check the visibility 
+	\textbf{To test:} \sout{Simulate a click of the List 
+	button}\textcolor{blue}{Call showList() and clickCounter()}, check the 
+	visibility 
 	of the 
-	List element. Simulate another click and check the visibility again. If 
-	they do not match, the test is successful.
+	List element. \sout{Simulate another click}\textcolor{blue}{Call the 
+	functions again} and check the visibility again. If 
+	\sout{they do not match} \textcolor{blue}{after the first click it is 
+	visible and after the second click it is not}, the test is successful.
 \subsubsection{updateMasterList}
-	updateMasterList appends the note the user has saved to the master list so 
+	\sout{updateMasterList appends the note the user has saved to the master 
+	list so 
 	it can be viewed when the List button is clicked.\\
 	\textbf{To test:} Simulate writing a note and clicking the Save Note 
 	button. 
 	Simulate a click of the List button and check to see if an element of that 
 	list exists with the same content and associated URL of the typed note. If 
-	both the content and the URL match, the test is successful.
+	both the content and the URL match, the test is successful.}
 \subsubsection{updateNote}
-	If the user has previously saved a note for the URL they are currently 
+	\sout{If the user has previously saved a note for the URL they are 
+	currently 
 	viewing, updateNote will display it when the extension icon is clicked.\\
 	\textbf{To test:} Simulate the writing and saving of a note. Close 
 	MacSidenotes and 
 	click on the icon again. Check the value of the sidebar's text area against 
 	the typed note. If the content of the text area matches the typed note, the 
-	test is successful.
+	test is successful.}
 \subsubsection{saveNote}
-	saveNote saves the current note in local storage along with it's associated 
+	\sout{saveNote saves the current note in local storage along with it's 
+	associated 
 	URL.\\
 	\textbf{To test:} Simulate the writing and saving of a note. Check local 
 	storage to ensure that the master list includes a note that contains the 
 	same content and associated URL as the typed note. If both the content and 
-	the URL match, the test is successful.
+	the URL match, the test is successful.}
 \subsubsection{getURL}
-	getURL returns the URL of the webpage the user is currently viewing.\\
+	\sout{getURL returns the URL of the webpage the user is currently viewing.\\
 	\textbf{To test:} Call getURL and check it's value against Chrome's 
 	official code for grabbing URLs found 
-	\href{https://developer.chrome.com/extensions/tabs}{here} 
-
+	\href{https://developer.chrome.com/extensions/tabs}{here} }
+\subsubsection{emptyMasterList}
+	\textcolor{blue}{emptyMasterList empties the master list of notes.\\
+	\textbf{To test:} Add a number of dummy rows to the Master List. Confirm 
+	that the number of rows added is as intended. Then call emptyMasterList() 
+	and check to see if the List has no rows in it. If it has no rows, the test 
+	is successful.}
+\subsubsection{showNotice}
+\textcolor{blue}{showNotice reveals an icon to the user, notifying them when a 
+Note has been saved or deleted.\\
+	\textbf{To test:} Check if the saveNotice and deleteNotice icons are not 
+	displayed. Call showNotice(), passing both saveNotice and deleteNotice. 
+	Check if they are both now displayed. If they were only displayed after the 
+	function call, the test is successful.}
 \subsection{Unit testing of output files}		
 
 MacSidenotes does not create output files, as everything is contained within 
