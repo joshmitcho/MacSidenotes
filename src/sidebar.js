@@ -1,20 +1,19 @@
-var numClicks;
-var updateNum;
-var deleteOccur;
-var table;
-//This block is necessary because Chrome extensions don't allow standard onClick functionality
+/** @private */ var numClicks;
+/** @private */ var updateNum;
+/** @private */ var table;
+/** @private */ var notifyTime = 1500;
+
+/**
+  * This block is necessary because Chrome extensions don't allow standard onClick functionality. In turn is populated with listeners that react to user input.
+  *
+  */
 document.addEventListener('DOMContentLoaded', function() {
 
     table = document.getElementById("tbody");
 
     //reinitializing updateNum
     updateNum = 0;
-
-    //initilaizing deleteOccur
-    deleteOccur = false;
-
-    //customAlert(document.getElementById("note").cols, "2000"); 
-   
+    
 
     //delete any saved empty notes
     deleteEmpty();
@@ -62,10 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-/* Makes user confirm whether or not they want to delete note */
 
-/*! \fn function deleteNote()
- *  \brief Makes user confirm whether or not they want to delete note.
+
+/**
+ *  Makes user confirm whether or not they want to delete note. Delete note is called when 'delete' button is pressed.
+ *  
  */
 function deleteNote(){
 
@@ -75,33 +75,36 @@ function deleteNote(){
     // onClick's logic below:
     itemDelete.addEventListener('click', function() {
 
-        deleteOccur = true;
-        
+
         document.getElementById("deletePrompt").style.display = 'none';
 
         var myURL = getURL();
         document.getElementById("note").value = '';
         localStorage.removeItem(myURL);
-        //updateMasterList();
+        
         updateNote();
-        //customAlert("Note Deleted!", "2000");
+       
 		showNotice("deleteNotice");        
 
     });
 
     var itemSave = document.getElementById('NO');
+    
     // onClick's logic below:
     itemSave.addEventListener('click', function() {
 
         document.getElementById("deletePrompt").style.display = 'none';
         
-        //customAlert("Note Was Not Deleted", "2000");        
+               
 
     });
 
 }
 
-/* Function deletes any empty notes */
+/**
+  * Function deletes any empty notes that are in the master list.
+  *
+  */
 function deleteEmpty(){
 
     for(var cnt = 0; cnt < localStorage.length; cnt++){
@@ -112,12 +115,18 @@ function deleteEmpty(){
 
 }
 
-/* Counts the number of times list button has been clicked */
+/**
+  * Counts the number of times the 'list' button has been clicked.
+  * 
+  */
 function clickCounter(){
     numClicks += 1;
 }
 
-/** Show/Hides List on button click */
+/** 
+  * Shows/Hides the master list on button click of 'list'
+  *
+  */
 function showList(){
 
     if(numClicks % 2 == 0){
@@ -136,7 +145,10 @@ function showList(){
 
 }
 
-/* Funciton updates the master list containing all notes */
+/**
+  * Updates the master list containing all notes.
+  *
+  */
 function updateMasterList(){
 
     deleteMasterList();
@@ -145,6 +157,10 @@ function updateMasterList(){
 
 }
 
+/**
+  * Deletes the current master list from the display table on the extension.
+  *
+  */
 function deleteMasterList(){
 
 
@@ -158,6 +174,11 @@ function deleteMasterList(){
     
 }
 
+
+/**
+  * Populates the master list with the most recent updates notes and links to notes while also grooming the output the user sees for aesthetic pleasure.
+  * 
+  */
 function populateMasterList(){
 
 
@@ -202,7 +223,10 @@ function populateMasterList(){
 
 
 
-/* This function brings up the note referenced to the current website  */
+/**
+  * Populates the extensions text area with the note referenced to for the current website.
+  * 
+  */
 function updateNote(){
 
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
@@ -224,14 +248,16 @@ function updateNote(){
 }
 
 
-/*Note is saved in local storage
-*The id 'note' refers to the textarea where the user types their note
-*/
+/** 
+  * Saves the id 'note', which is the text area of the extension, to users google chrome localStorage.
+  * 
+  */
 function saveNote() {
 
 	// Get text written in the textArea
     var note = document.getElementById("note").value;
 
+    //Disallows empty notes to be saved
 	if (note != ""){
 	
     // Get the current URL
@@ -241,10 +267,7 @@ function saveNote() {
     // save what is currently written in the note to localStorage and associate it with the current URL
     localStorage[tabURL] = note;
 
-    //var myvar = localStorage[tabURL];
-
-	//customAlertGood("Note Saved!", "2000");
-	
+	//Displays to the user that the note has been saved
 	showNotice("saveNotice");
 
     // call updateNote() to update current note to reference of the URL, essentially allows note to be pulled up again when tab closed 
@@ -253,9 +276,11 @@ function saveNote() {
  }
 
 
-/* Function grabs the URL of the current tab 
- * Returns the URL   
- */
+/** 
+  * Grabs the URL of the current tab and returns it. 
+  *
+  * @return {URL} pageURL The url of the current tab   
+  */
 function getURL() {
 	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
     	pageURL = tabs[0].url;
@@ -263,10 +288,12 @@ function getURL() {
 	return pageURL;
 }
 
-/* Function to display messages for testing purposes as well as notifying user of possible deletion
- * @param msg is the message that will be displayed on the screen
- * @param duration is the duration of thime the message will be displayed on the screen
- */
+/** 
+  * Display messages for testing purposes as well as notifying user of possible deletion.
+  *
+  * @param {message} msg The message that will be displayed on the screen.
+  * @param {duration} duration The duration of thime the message will be displayed on the screen.
+  */
 function customAlert(msg,duration)
 {
 	var styler = document.createElement("div");
@@ -280,10 +307,12 @@ function customAlert(msg,duration)
 	document.body.appendChild(styler);
 }
 
- /* Function to display messages for testing purposes as well as notifying user of saved changes
-     * @param msg is the message that will be displayed on the screen
-     * @param duration is the duration of thime the message will be displayed on the screen
-     */
+  /** 
+    * Display messages for testing purposes as well as notifying user of saved changes.
+    *
+    * @param {message} msg The message that will be displayed on the screen.
+    * @param {duration} duration The duration of thime the message will be displayed on the screen.
+    */
 function customAlertGood(msg,duration)
 {
 	var styler = document.createElement("div");
@@ -296,6 +325,13 @@ function customAlertGood(msg,duration)
 	document.body.appendChild(styler);
 	
 }
+
+
+/** 
+  * Shows notification message to inform user of a saved or deleted note/
+  * 
+  * @param {action} which Save note or Delete note.
+  */
  function showNotice(which)
 {
 	notice = document.getElementById(which);
@@ -303,5 +339,5 @@ function customAlertGood(msg,duration)
 	setTimeout(function()
 	{
 		notice.style.display = "none";
-	},1500);		
+	},notifyTime);		
 }
