@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{color}
+\usepackage[normalem]{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -39,6 +41,7 @@
 \date{\today}
 
 %\input{../../Comments}
+%\sout{text}
 
 \begin{document}
 
@@ -49,12 +52,14 @@
 \listoftables
 \listoffigures
 
-\begin{table}[bp]
+\begin{table}[H]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Nov 13th & Rev0 & Complete Sections 1-7\\
+\textcolor{blue}{Dec 7th} & \textcolor{blue}{Rev 1.0} & \textcolor{blue}{Revision 1 
+Modifications}\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -64,6 +69,18 @@ Nov 13th & Rev0 & Complete Sections 1-7\\
 \pagenumbering{arabic}
 
 \section{Introduction}
+
+\textcolor{blue}{MacSidenotes is a Chrome Extension for taking notes on any web site. 
+Your notes are linked with the URL and will appear upon your next visit. Works offline 
+using Chrome's local storage.}
+
+\textcolor{blue}{MacSidenotes uses an MVC architecture. The model of the application 
+would be the HTML, which is the skeleton for the content. The CSS of the extension 
+would represent the view, as it adds the visual styling to the application. This perfectly 
+embodies the separation of concerns as any changes to the CSS will not affect the 
+functionality of the application. Finally, the controller would be the JS (JavaScript) file in 
+tandem with the browser, in our case Google Chrome, , as it is responsible for the 
+combination of the HTML and CSS as well as rendering them.  }
 
 Decomposing a system into modules is a commonly accepted approach to developing
 software.  A module is a work assignment for a programmer or programming
@@ -162,8 +179,9 @@ decisions will be changed.
   a source of input data external to the software.
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucChrome}:] The software will 
   be run within a Chrome Extension environment.
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] The goal of the 
-software: to save notes for the user for later viewing. 
+  
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] \sout{The goal of the 
+	software: to save notes for the user for later viewing. }
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
