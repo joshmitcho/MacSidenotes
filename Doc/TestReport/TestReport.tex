@@ -1,0 +1,85 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Report\MacSidenotes}
+
+\author{Team \#04
+		\\ Josh Mitchell mitchjp3
+		\\ Matthew Shortt shorttmk
+}
+
+\date{\today}
+
+%\input{../Comments}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+Date 1 & 1.0 & Notes\\
+Date 2 & 1.1 & Notes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+This document ...
+
+\section{Functional Requirements Evaluation}
+
+\section{Nonfunctional Requirements Evaluation}
+
+\subsection{Usability}
+		
+\subsection{Performance}
+
+\subsection{etc.}
+	
+\section{Comparison to Existing Implementation}	
+
+The original project 
+\href{https://github.com/sidenotes/sidenotes}{Sidenotes} is defunct and no 
+longer works. Sidenotes relied on a Dropbox API that is now deprecated, and 
+thus MacSidenotes can't be compared to the original implementation.
+
+\section{Unit Testing}
+
+\section{Changes Due to Testing}
+
+\section{Automated Testing}
+		
+\section{Trace to Requirements}
+		
+\section{Trace to Modules}		
+
+\section{Code Coverage Metrics}
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\end{document}
