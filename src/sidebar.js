@@ -285,8 +285,8 @@ function getURL() {
 /** 
   * Display messages for testing purposes.
   *
-  * @param {message} string The message that will be displayed on the screen.
-  * @param {duration} string The duration of time the message will be displayed on the screen.
+  * @param {string} message The message that will be displayed on the screen.
+  * @param {string} duration The duration of time the message will be displayed on the screen.
   */
 function customAlert(msg,duration)
 {
@@ -304,8 +304,8 @@ function customAlert(msg,duration)
   /** 
     * Display messages for testing purposes.
     *
-    * @param {message} string The message that will be displayed on the screen.
-    * @param {duration} string The duration of time the message will be displayed on the screen.
+    * @param {string} message The message that will be displayed on the screen.
+    * @param {string} duration The duration of time the message will be displayed on the screen.
     */
 function customAlertGood(msg,duration)
 {
@@ -323,7 +323,7 @@ function customAlertGood(msg,duration)
 /** 
   * Shows notification message to inform user of a saved or deleted note.
   * 
-  * @param {string} which Save note or Delete note.
+  * @param {string} which saveNotice or deleteNotice.
   */
  function showNotice(which)
 {
