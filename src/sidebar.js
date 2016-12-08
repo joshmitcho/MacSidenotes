@@ -136,7 +136,7 @@ function showList(){
   */
 function updateMasterList(){
 
-    deleteMasterList();
+  deleteMasterList();
 
 	populateMasterList();
 
