@@ -1,0 +1,1 @@
+Download the git project and run SpecRunner.html to see the results of the automated testing
