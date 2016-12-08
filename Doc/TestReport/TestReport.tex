@@ -3,6 +3,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{color}
+\usepackage{float}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -10,9 +13,9 @@
     linkcolor=red,
     urlcolor=blue
 }
-%\usepackage[round]{natbib}
+\usepackage[round]{natbib}
 
-\title{SE 3XA3: Test Report\MacSidenotes}
+\title{SE 3XA3: Test Report\\MacSidenotes}
 
 \author{Team \#04
 		\\ Josh Mitchell mitchjp3
@@ -26,19 +29,17 @@
 \begin{document}
 
 \maketitle
-
 \pagenumbering{roman}
 \tableofcontents
 \listoftables
 \listoffigures
 
-\begin{table}[bp]
+\begin{table}[h]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Dec 7th & 1.0 & Revision 1\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -47,17 +48,258 @@ Date 2 & 1.1 & Notes\\
 
 \pagenumbering{arabic}
 
-This document ...
+This document describes the implementation of the 
+\href{https://gitlab.cas.mcmaster.ca/macsidenotes/macsidenotes/blob/master/Doc/TestPlan/TestPlan.pdf}{MacSidenotes
+ Test Plan}. It covers: the testing of Functional and Non-Functional 
+ Requirements, System and Unit Testing, and the tracing of Test cases to the 
+ modules and requirements.
 
 \section{Functional Requirements Evaluation}
+\subsection{Sidebar - Typing Window}
 
+\begin{enumerate}
+	
+	\item{Sidebar Open\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Default Chrome browser window.
+	
+	Input: Extension icon click.
+	
+	Expected Results: Sidebar will appear at the top right of the page.
+	
+	Actual Results Match Expected Results: Yes
+	
+	\item{Sidebar Close-1\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar appears at the top right of the page.
+	
+	Input: Extension icon click.
+	
+	Expected Results: Sidebar disappears leaving solely the browser page.
+	
+	Actual Results Match Expected Results: Yes
+	
+	\item{Sidebar Close-2\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar appears at the top right of the page.
+	
+	Input: Click event on browser page.
+	
+	Expected Results: Sidebar disappears leaving solely the browser page.
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
+
+\subsection{Note Taking}
+
+\paragraph{Typing}
+
+\begin{enumerate}
+	
+	\item{Input 1\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Blank text area.
+	
+	Input: User keyboard input.
+	
+	Expected Results: User keyboard input.
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
+
+\subsection{Note Saving}
+
+\paragraph{Save Note}
+
+\begin{enumerate}
+	
+	\item{Save Note - 1\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Text window with keyboard input.
+	
+	Input: Click event on 'Save Note' button.
+	
+	Expected Results: Confirmation Message 'Note Saved!'
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
+
+\subsection{Master List}
+
+\paragraph{List Management}
+
+\begin{enumerate}
+	
+	\item{List View - Open\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar with solely text area and buttons. 
+	
+	Input: Click event on 'List' button.
+	
+	Expected Results: Master List shown below the contents of the Sidebar.
+	
+	Actual Results Match Expected Results: Yes
+	
+	\item{List View - Closed\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Sidebar with text area, buttons and Master List. 
+	
+	Input: Click event on 'List' button.
+	
+	Expected Results: Master List disappears from the Sidebar.
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
+
+\subsection{Revisit URL}
+
+\paragraph{Link to Previous Notes}
+
+\begin{enumerate}
+	
+	\item{Link to Previous Note\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Master List contains at least 1 note and is visible. 
+	
+	Input: Click event on a URL in Master List
+	
+	Expected Results: New Chrome tab opens at that URL.
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
+
+\subsection{Note Deletion}
+
+\paragraph{Delete Note}
+
+\begin{enumerate}
+	
+	\item{Delete Note\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Text Area with a note saved to it. 
+	
+	Input: Click event on 'Delete Note' button.
+	
+	Expected Results: Deletion confirmation message. 
+	
+	Actual Results Match Expected Results: Yes
+	
+	\item{Delete Confirm - YES\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: 'Delete Note' has been clicked prompting confirmation. 
+	
+	Input: Click event on 'YES' button.
+	
+	Expected Results: Confirmation of deletion message. 
+	
+	Actual Results Match Expected Results: Yes
+	
+	\item{Delete Confirm - NO\\}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: 'Delete Note' has been clicked prompting confirmation. 
+	
+	Input: Click event on 'NO' button.
+	
+	Expected Results: Note is not deleted. 
+	
+	Actual Results Match Expected Results: Yes	
+	
+\end{enumerate}
 \section{Nonfunctional Requirements Evaluation}
 
-\subsection{Usability}
-		
+\subsection{Look and Feel}
+
+\paragraph{Look}
+
+\begin{enumerate}
+	
+	\item{Sidebar Size\\}
+	
+	Type: Manual, Dynamic
+	
+	Initial State: Default Chrome browser window.
+	
+	Input: Extension icon click.
+	
+	Output: Sidebar popup.
+	
+	Expected Results: Sidebar will appear at the top right of the page and does 
+	not take up more than SIDEBAR\_WIDTH.
+	
+	Actual Results Match Expected Results: Yes	
+	
+\end{enumerate}
+
+\subsection{Usability and Humanity Requirements}
+
+\paragraph{Usability \& Humanity}
+
+\begin{enumerate}
+	
+	\item{Communication - English\\}
+	
+	Type: Manual, Static, Dynamic
+	
+	Initial State: Varied
+	
+	Input: N/A
+	
+	Output: Messages in English
+	
+	Expected Results: All text is understandable and in English
+	
+	Actual Results Match Expected Results: Yes 
+	
+\end{enumerate}
+
 \subsection{Performance}
 
-\subsection{etc.}
+\paragraph{Speed}
+
+\begin{enumerate}
+	
+	\item{Extension Response\\}
+	
+	Type: Manual, Dynamic
+	
+	Initial State: Varied
+	
+	Input: User input.
+	
+	Output: Extension output.
+	
+	Expected Results: Extension use is not too slow as to interrupt user's flow.
+	
+	Actual Results Match Expected Results: Yes
+	
+\end{enumerate}
 	
 \section{Comparison to Existing Implementation}	
 
@@ -66,20 +308,188 @@ The original project
 longer works. Sidenotes relied on a Dropbox API that is now deprecated, and 
 thus MacSidenotes can't be compared to the original implementation.
 
-\section{Unit Testing}
+\section{Automated Unit Testing}
+
+Due to the nature of the design, all unit tests are automated using Jasmine.
+
+
+
+\subsection{clickCounter}
+
+	Type: Unit, Dynamic, Automated
+
+	Initial State: Varied
+
+	Input: Click event on 'Show List' button.
+
+	Expected Results: numClicks incremented
+
+	Actual Results Match Expected Results: Yes
+	
+\subsection{showList}
+
+	Type: Unit, Dynamic, Automated
+
+	Initial State: Master List not visible
+
+	Input: 2 Click events on 'Show List' button.
+
+	Expected Results: Master List appear, then disappear
+
+	Actual Results Match Expected Results: Yes
+
+\subsection{emptyMasterList}
+
+	Type: Unit, Dynamic, Automated
+
+	Initial State: Master List has no items
+
+	Input: Add items to Master List, then call emptyMasterList()
+
+	Expected Results: Remove all rows from Master List 
+
+	Actual Results Match Expected Results: Yes
+
+\subsection{showNotice}
+
+	Type: Unit, Dynamic, Automated
+
+	Initial State: saveNotice and deleteNotice icons not visible
+
+	Input: 2 Click events on 'Save Note' and 'Delete Note" buttons.
+
+	Expected Results: saveNotice and deleteNotice icons appear
+
+	Actual Results Match Expected Results: Yes
 
 \section{Changes Due to Testing}
-
-\section{Automated Testing}
 		
-\section{Trace to Requirements}
+	The most significant changes to the extension were made after completing 
+	Usability Testing. Users suggested that the "http://www." be removed from 
+	the URL to increase the aesthetic appeal of the UI.\\
+	Users also showed interest in a 'flat' design to the UI buttons and a more 
+	cohesive interface. These ideas were incorporated into the design of the 
+	extension.
 		
-\section{Trace to Modules}		
-
+\section{Trace to Requirements}	
+	\begin{table}[H]
+		\begin{center}
+		\setlength{\extrarowheight}{1ex}
+		\caption {\bf Trace Back to Requirements}
+		\begin{tabularx}{\textwidth}{c|c}
+			{\bf Test \#} & {\bf Requirement \#}\\
+			\hline
+			1.1 & F.1 \\
+			1.2 & F.2 \\
+			1.3 & F.3 \\
+			1.4 & F.4 \\
+			1.5 & F.5 \\
+			1.6 & F.6 \\
+			2.1 & NF.2 \\
+			2.1 & NF.5 \\
+			2.1 & NF.6 \\
+		\end{tabularx}
+	\end{center}
+	\end{table}
+		
+\section{Trace to Modules}
+	
+	\begin{table}[H]	
+		\setlength{\extrarowheight}{1ex}
+		\caption {\bf Trace Back to Modules}
+		\begin{tabularx}{\textwidth}{c|c}
+			{\bf Test \#} & {\bf Module \#}\\
+			\hline
+			1.1 & M8 \\
+			1.2 & M9 \\
+			1.3 & M2 \\
+			1.4 & M3 \\
+			1.5 & M3 \\
+			1.6 & M2 \& M6 \\
+			2.1 & M8 \\
+			2.1 & M8 \\
+			2.1 & M1 \\
+			4.1 & M3 \\
+			4.2 & M3 \\
+			4.3 & M4 \\
+			4.4 & M6 \& M8 \\
+		\end{tabularx}
+		
+	\end{table}
 \section{Code Coverage Metrics}
+
+\subsection{Function Coverage}
+	With the exception of 2 functions that are only used for debugging 
+	purposes, every function implemented in the extension is called at least 
+	once.
+	
+\subsection{Statement Coverage}
+	Not counting the statements within the 2 aforementioned debugging 
+	functions, every statement in the extension is executed.
+	
+\subsection{Branch Coverage}
+	All of the branches that are integral to the core functionality of the 
+	extension are covered. The only ones that are not covered are within the 
+	aforementioned debugging functions or would not break the extension if they 
+	malfunctioned (eg. text truncating).
+	
+\subsection{Condition Coverage}
+	Due to the lack of total Branch Coverage (as addressed above), total 
+	Condition Coverage is not achieved. The most important boolean 
+	sub-expressions are evaluated to both true and false, though.
+
+\section{Appendix}
+
+\subsection{Symbolic Parameters}
+
+The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+\begin{table}[!htbp]
+	\caption{\textbf{Table of Symbolic Parameters}} \label{Table}
+	
+	\begin{tabularx}{\textwidth}{p{5cm}X}
+		\toprule
+		\textbf{Symbolic Constants} & \textbf{Value}\\
+		\midrule
+		\sout{RESPONSE\_TIME} & \sout{The maximum amount of time the system has 
+		to respond to a user interaction. This number is 2 seconds.}  \\
+		SIDEBAR\_WIDTH & The maximum width that the Sidebar should be upon 
+		first opened. The maximum sidebar width is 30\% of a users full browser 
+		size.\\
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}	
+
+\subsection{Usability Survey Questions}
+
+During October of 2016 Matthew asked his two roommates about the usability of 
+the extension. At this point the product was at the proof of concept stage. \\
+\\
+Some of the questions asked were:\\
+\\
+What do you like about the product?\\
+What do you think could be improved?\\
+What features would you like to see added to the product?\\
+Would you use the product?\\
+\\
+Both roommates liked the product as-is due to the facility in which it can be 
+used in tandem with it's practicality. Some suggestion put forward included:\\
+\\
+Bullet Points\\
+Font Colours/Sizes/Effects\\
+Highlights\\
+The ability to add pictures\\
+Notification if page has note on it already\\
+Titles for notes\\
+\\
+Overall the meeting was very successful and produced many great ideas that 
+could find their way onto the final product. Both roommates said they would 
+definitely use the product. 
 
 \bibliographystyle{plainnat}
 
-\bibliography{SRS}
+%\bibliography{SRS}
 
 \end{document}
