@@ -1,68 +1,76 @@
 \documentclass{article}
 
+\usepackage{booktabs}
+\usepackage{mdframed}
+\usepackage{framed}
+\usepackage{fancybox}
+\usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{color}
+\usepackage{float}
 
-\title{%
-	SE 3XA3: Problem Statement \\
-	\large MacSidenotes \vspace{-5ex}\\}
-\date{}
+\title{SE 3XA3: Requirements Document\\MacSidenotes}
 
+\author{Team 4
+	\\ Josh Mitchell mitchjp3
+	\\ Matthew Shortt shorttmk
+}
 
-\setlength{\parindent}{4em}
-\setlength{\parskip}{1em}
+\date{\today}
+
 
 \begin{document}
-	\begin{table}[ht]
+	
+	\maketitle
+	\newpage
+	\begin{table}[H]
 		\centering
 		\resizebox{\textwidth}{!}{\begin{tabular}{| c c c |}
 			\hline
 			
-			\multicolumn{3}{ | c | }{\textbf{Table 1: Revision History}} \\ 
+			\multicolumn{3}{ | c | }{\sout{\textbf{Table 1: Revision History}}} 
+			\\ 
 			
 			\hline
 			
-			\multicolumn{1}{ | l | }{\textbf{Date}} & \multicolumn{1}{   l | }{\textbf{Developer}} & 
-			\multicolumn{1}{   l | }{\textbf{Change}} \\
+			\multicolumn{1}{ | l | }{\sout{\textbf{Date}}} & \multicolumn{1}{   
+			l | }{\sout{\textbf{Developer}}} & 
+			\multicolumn{1}{   l | }{\sout{\textbf{Change}}} \\
 			
 			\hline
 			
-			\multicolumn{1}{ | l | }{Sept 21st, 2016} & \multicolumn{1}{   l | }{Josh, Matt} & 
-			\multicolumn{1}{   l | }{Initial Draft} \\
+			\multicolumn{1}{ | l | }{\sout{Sept 21st, 2016}} & 
+			\multicolumn{1}{   l | }{\sout{Josh, Matt}} & 
+			\multicolumn{1}{   l | }{\sout{Initial Draft}} \\
 			
 			\hline
 			
 		\end{tabular}}
 	\end{table}
-	\newpage
 	
-	\maketitle
-	
-	\begin{center}
-		
-		\begin{tabular}{| c  c |}
-		
-			
-			\multicolumn{2}{  c }{Group 4} \\ 
-			
-		
-			
-			\multicolumn{1}{ l }{Josh Mitchell} & \multicolumn{1}{ r }{mitchjp3}  \\
-			
-		
-			
-		    \multicolumn{1}{ l }{Matthew Shortt} & \multicolumn{1}{ r }{shorttmk}  \\
-		
-			
-		
-			
-		\end{tabular}
-	\end{center}
+	\begin{table}[H]
+		\caption{\textcolor{blue}{\bf Revision History}}
+		\begin{tabularx}{\textwidth}{p{3cm}p{2cm}p{2cm}X}
+			\toprule {\textcolor{blue}{\bf Date}} & {\textcolor{blue}{\bf 
+			Version}} & {\textcolor{blue}{\bf Author(s)}} & 
+			{\textcolor{blue}{\bf 
+			Notes}}\\
+			\midrule
+			Sept 21st, 2016 & 0.5 & Josh, Matt & Initial Draft\\
+			\textcolor{blue}{Dec 7th} & \textcolor{blue}{1.0} & 
+			\textcolor{blue}{Josh} 
+			&\textcolor{blue}{Revision 1 Modifications}\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
 	
 	\begin{flushleft}
 		
-		When surfing the web, often one will find a webpage they wish to return to. 
+		When surfing the web, often one will find a webpage they wish to 
+		return to. 
 		Sometimes the reason to return to this page is more complicated than the ~30 
 		characters that Chrome allows for bookmark descriptions before truncating them 
 		with ellipses. Additionally, one may wish to annotate the pages they visit, to 
