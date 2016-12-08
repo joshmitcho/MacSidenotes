@@ -79,8 +79,9 @@ would be the HTML, which is the skeleton for the content. The CSS of the extensi
 would represent the view, as it adds the visual styling to the application. This perfectly 
 embodies the separation of concerns as any changes to the CSS will not affect the 
 functionality of the application. Finally, the controller would be the JS (JavaScript) file in 
-tandem with the browser, in our case Google Chrome, , as it is responsible for the 
-combination of the HTML and CSS as well as rendering them.  }
+tandem with the browser, in our case Google Chrome. Chrome is responsible for the 
+combination of the HTML and CSS as well as rendering them to the screen, while the JS 
+file recognizes input from the user and handles it accordingly.}
 
 Decomposing a system into modules is a commonly accepted approach to developing
 software.  A module is a work assignment for a programmer or programming
@@ -193,20 +194,38 @@ actually be implemented.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item [\refstepcounter{mnum} \mthemnum \label{mSave}:] Save Note Module
+\textcolor{blue}{ - handled by the Chrome Extension environment on which the 
+	software is running. Once Chrome has been installed, the hardware is hidden 
+	from the rest of the software.}
+\item [\refstepcounter{mnum} \mthemnum \label{mSave}:] Save\textcolor{blue}{/Delete}  
+Note Module 
+\textcolor{blue}{ - includes functions: saveNote, updateNote}
 \item [\refstepcounter{mnum} \mthemnum \label{mVisibility}:] Master List 
-Visibility Module
+Visibility Module \textcolor{blue}{ - includes functions: showList, clickCounter as 
+appearance specification in the CSS file}
 \item [\refstepcounter{mnum} \mthemnum \label{mUpdate}:] Update Master List 
-Module
-\item [\refstepcounter{mnum} \mthemnum \label{mURL}:] URL Fetch Module
-\item [\refstepcounter{mnum} \mthemnum \label{mTrigger}:] Save Trigger Module
-\item [\refstepcounter{mnum} \mthemnum \label{mNotify}:] Notify User Module
-\item [\refstepcounter{mnum} \mthemnum \label{mUI}:] UI Appearance Module
+Module \textcolor{blue}{ - includes functions: updateMasterList, deleteMasterList, 
+populateMasterList}
+\item [\refstepcounter{mnum} \mthemnum \label{mURL}:] URL Fetch Module 
+\textcolor{blue}{ - includes function: getURL}
+\item [\refstepcounter{mnum} \mthemnum \label{mTrigger}:] Save\textcolor{blue}{/Delete} 
+Trigger Module 
+\textcolor{blue}{ - event listeners located in the 'DOMContentLoaded' handle user 
+interaction, including button clicks}
+
+\item [\refstepcounter{mnum} \mthemnum \label{mNotify}:] \sout{Notify User Module}
+
+\item [\refstepcounter{mnum} \mthemnum \label{mUI}:] UI Appearance Module 
+\textcolor{blue}{ - CSS and HTML files handle the appearance of the extension}
+
+\item [\refstepcounter{mnum} \mthemnum \label{mNote}:] Note Typing Module 
+\textcolor{blue}{ - includes function: updateNote in tandem with the HTML and CSS files 
+to display a textArea.}
 \end{description}
 
-\textbf{M1} is handled by the Chrome Extension environment on which the 
-software is running. Once Chrome has been installed, the hardware is hidden 
-from the rest of the software.\\
+\sout{\textbf{M1} is handled by the Chrome Extension environment on which the 
+	software is running. Once Chrome has been installed, the hardware is hidden 
+	from the rest of the software.}\\
 
 \begin{table}[h!]
 \centering
@@ -215,12 +234,13 @@ from the rest of the software.\\
 \textbf{Level 1} & \textbf{Level 2}\\
 \midrule
 
-{Hardware-Hiding Module} & ~ \\
+{Hardware-Hiding Module} & \textcolor{blue}{Google Chrome API} \\
 \midrule
 
 \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module} & Save Trigger Module\\
-& Notify User Module\\
+& \sout{Notify User Module}\\
 & UI Appearance Module\\
+& \textcolor{blue}{Note Typing Module}\\
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} & {
@@ -270,25 +290,26 @@ selected.
 \item[Implemented By:] OS, Chrome
 \end{description}
 
-\subsection{Behaviour-Hiding Module}
+\subsection{Behaviour-Hiding Modules}
 
 \subsubsection{Save Trigger Module (\mref{mTrigger})}
 
 \begin{description}
 \item[Secrets:]What causes the Note to be saved (button press vs closing the 
-sidebar).
+	sidebar).
 \item[Services:]Allows the call of the Save Note module \textbf{\mref{mSave}} 
 (specified below).
 \item[Implemented By:] MacSidenotes
 \end{description}
 
+
 \subsubsection{Notify User Module (\mref{mNotify})}
 
 \begin{description}
-\item[Secrets:]The format of the user notification message.
-\item[Services:]Allows the user to be alerted when they have successfully saved 
-or deleted a Note.
-\item[Implemented By:] MacSidenotes
+\item[Secrets:]\sout{The format of the user notification message.}
+\item[Services:]\sout{Allows the user to be alerted when they have successfully saved 
+or deleted a Note.}
+\item[Implemented By:] \sout{MacSidenotes}
 \end{description}
 
 \subsubsection{UI Appearance Module (\mref{mUI})}
@@ -300,7 +321,15 @@ or deleted a Note.
 	\item[Implemented By:] MacSidenotes
 \end{description}
 
-\subsection{Software Decision Module}
+\textcolor{blue}{\subsubsection{Note Typing Module (\mref{mNote})}
+\begin{description}
+	\item[Secrets:]The format and appearance of the text area the user types in. 
+	\item[Services:]Allows the user to type a note into the extension.
+	\item[Implemented By:] MacSidenotes
+\end{description}
+}
+
+\subsection{Software Decision Modules}
 
 \subsubsection{Update Master List Module (\mref{mUpdate})}
 
@@ -349,7 +378,7 @@ requirements and between the modules and the anticipated changes.
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-F.1 & \mref{mHH}\\
+F.1 & \mref{mHH}, \textcolor{blue}{\mref{mUI}}\\
 F.2 & \mref{mUI}\\
 F.3 & \mref{mSave}, \mref{mTrigger}\\
 F.4 & \mref{mUI}, \mref{mVisibility}\\
@@ -387,7 +416,7 @@ NF.14 & \mref{mUI}\\
 \acref{acVisibility} & \mref{mVisibility}\\
 \acref{acUpdate} & \mref{mUpdate}\\
 \acref{acURL} & \mref{mURL}\\
-\acref{acNotify} & \mref{mNotify}\\
+\acref{acNotify} & \sout{\mref{mNotify}} \textcolor{blue}{\mref{mTrigger}}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -401,20 +430,28 @@ provided. \citet{Parnas1978} said of two programs A and B that A {\em uses} B if
 correct execution of B may be necessary for A to complete the task described in
 its specification. That is, A {\em uses} B if there exist situations in which
 the correct functioning of A depends upon the availability of a correct
-implementation of B.  Figure \ref{FigUH} illustrates the use relation between
-the modules. It can be seen that the graph is a directed acyclic graph
-(DAG). Each level of the hierarchy offers a testable and usable subset of the
-system, and modules in the higher level of the hierarchy are essentially simpler
-because they use modules from the lower levels.
+implementation of B.  Figure \ref{FigUH} illustrates the 
+\textcolor{blue}{unrevised} use 
+relation between the modules. \textcolor{blue}{Figure \ref{FigUH1} illustrates the revised 
+use relation between the modules.} It can be seen that the graph is a directed acyclic 
+graph (DAG). 
+Each level of the hierarchy offers a testable and usable subset of the system, and 
+modules in the higher level of the hierarchy are essentially simpler because they use 
+modules from the lower levels.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{3XA3UsesRelationship.png}
-\caption{Use hierarchy among modules}
+\caption{\textcolor{blue}{Unrevised} use hierarchy among modules}
 \label{FigUH}
 \end{figure}
 
-\section*{References}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{UsesRelationship_Rev1.png}
+	\caption{\textcolor{blue}{Revised use hierarchy among modules}}
+	\label{FigUH1}
+\end{figure}
 
 \bibliographystyle {plainnat}
 \bibliography {MG}
