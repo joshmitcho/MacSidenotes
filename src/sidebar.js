@@ -1,3 +1,7 @@
+/* Code written using w3schools.com JavaScript Style Guide and Coding Conventions, with one 
+  exception. Indentation will be achieved using tabs instead of spaces. 
+  Style Guide and Coding Convention can be found at: http://www.w3schools.com/js/js_conventions.asp  */
+
 /** @private click counter for list button, increment on keyboard click*/ var numClicks;
 /** @private html/css table that is being displayed/hidden by js*/ var table;
 /** @private time 'Note Saved'/'Note Deleted' messages are displayed for*/ var notifyTime = 1500;

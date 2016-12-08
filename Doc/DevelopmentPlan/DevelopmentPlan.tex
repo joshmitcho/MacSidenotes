@@ -4,6 +4,8 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{color}
+\usepackage[normalem]{ulem}
 
 \title{SE 3XA3: Development Plan\\MacSidenotes}
 
@@ -28,6 +30,8 @@
 			Sept 28, 2016 & Matt & Sections 2, 4 \& 6\\
 			Sept 29, 2016 & Josh & Sections 3, 5, 7 \& 8\\
 			Oct 17, 2016 & Matt & More specific proof of concept\\
+			\textcolor{blue}{Dec 7, 2016} & \textcolor{blue}{Matt, Josh} & 
+			\textcolor{blue}{Revision 1 Modifications}\\
 			\bottomrule
 		\end{tabularx}
 	\end{table}
@@ -98,15 +102,18 @@
 	
 	For the proof of concept demo a completed section of the extension will be 
 	demonstrated. This section will include a sidebar that will pop-up when the icon is 
-	clicked. The note that is written in the sidebar shall be able to be saved locally, along 
-	with a reference to the URL that the note was written on. 
+	clicked. The note that is written in the sidebar shall be able to be saved locally, 
+	\textcolor{blue}{using Chrome's localStorage}, along with a reference to the URL that 
+	the note was written on. \textcolor{blue}{A list button will be clicked to show/hide the 
+	table containing the note and URL for the user.}
 	\section{Technology}
 	
 	HTML, CSS and JavaScript will be used to code the application. 'SublimeText 
 	2' is a user 
 	friendly
 	IDE that will be used for the project. The testing framework will be 
-	JsUnit. 
+	\sout{JsUnit} \textcolor{blue}{Jasmine}. \textcolor{blue}{The documentation generator 
+	will be JSDoc.}
 	Documentation will be generated in LaTeX using TexStudio and 
 	the Gantt Chart will be produced using GanttProject.
 	
@@ -134,5 +141,39 @@
 		\end{table}
 	
 	\section{Project Review}
+	
+	\textcolor{blue}{This project was a massive success. It provided both Matt and Josh 
+	with excellent experience in a real project management environment. Matt and Josh 
+	learned Git, 
+	Latex, Doxygen and Gantt, skills they did not know prior to the course. Also they 
+	gained a 
+	tremendous amount of experience using javascript, html, and css.}
+	\newline
+	\textcolor{blue}{Things that went well during the project included:}
+		\begin{itemize}
+			\item \textcolor{blue}{Communication}
+			\item \textcolor{blue}{Collaboration}
+			\item \textcolor{blue}{Staying focused on keeping usability a top priority}
+			\item \textcolor{blue}{Overall effort of members of the team}
+			\item \textcolor{blue}{Outcome of the project was better than expected}
+			\item \textcolor{blue}{Received very positive feedback from users and are looking 
+			to put the extension on the webstore.}
+		\end{itemize}
+	\textcolor{blue}{Things that went less well during the project included:}
+		\begin{itemize}
+			\item \textcolor{blue}{Using the Gantt was not very useful, and would suggest not
+			using for following years.}
+			\item \textcolor{blue}{Adhering to the meeting schedule near the end of the 
+			project as labs did not become mandatory}
+		\end{itemize}
+	\textcolor{blue}{Plans change frequently and dramatically during the course of a small 
+	scaled project, so keeping the development plan mutable is a good idea.}
+	\newline
+	\newline
+	\textcolor{blue}{Actually adhering to a meeting schedule throughout the entire project 
+	would be effective in not having a time crunch going into deadlines. Other than this the 
+	project was fun and communication \& productivity came easily.}
+
+
 	
 \end{document}
