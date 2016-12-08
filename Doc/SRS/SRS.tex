@@ -8,6 +8,8 @@
 \usepackage{mdframed}
 \usepackage{framed}
 \usepackage{fancybox}
+\usepackage[normalem]{ulem}
+\usepackage{color}
 \newcolumntype{N}{>{\centering\arraybackslash}m{1.5cm}}
 \newcolumntype{L}{>{\centering\arraybackslash}m{2.2cm}}
 \newcolumntype{C}{>{\centering\arraybackslash}m{4.4cm}}
@@ -46,14 +48,15 @@
 
 
 
-\begin{table}[h]
+\begin{table}[H]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Author(s)} & {\bf Notes}\\
 \midrule
 Oct 6th, 2016 & 0.5 & Josh & Section 2 Complete\\
-Oct 11th, 2016 & 1.0 & Matt & Section 1 \& 3 Complete\\
-%Date 2 & 1.1 & Notes\\
+Oct 11th, 2016 & 0.8 & Matt & Section 1 \& 3 Complete\\
+\textcolor{blue}{Dec 7th} & \textcolor{blue}{1.0} & Josh 
+&\textcolor{blue}{Revision 1 Modifications}\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -177,7 +180,12 @@ offerings.
 		Note List view (out) & Show list of previous notes.\\
 		5. &User clicks note in Note List & Button click event (in) \newline 
 		HTTP request (out) \newline Webpage response (in) \newline Webpage 
-		view (out) & Send user to URL attached to previously saved note.
+		view (out) & Send user to URL attached to previously saved note.\\
+		\textcolor{blue}{6.} &\textcolor{blue}{User clicks Delete Note Button} 
+		& \textcolor{blue}{Button click 
+		event (in) \newline Webpage URL (in) \newline Note Deleted message 
+		(out)}  & \textcolor{blue}{Delete user's note from local browser 
+		storage.}
 	\end{tabularx}
 
 \end{table}
@@ -185,18 +193,20 @@ offerings.
 \subsubsection{Individual Product Use Cases}
 {\bf 1.} User wishes to create a note for a Wikipedia article (or any webpage) 
 they are viewing, so they click the MacSidenotes icon in their chrome browser. 
-The notes sidebar appears on the right side of the screen\\
+The MacSidenotes sidebar appears on the right side of the screen\\
 {\bf 2.} User begins to type their note, "Section 7 is relevant for thesis 
 paper" and it appears in the sidebar.\\
-{\bf 3.} User clicks the save icon, and their note is saved in local browser 
-storage along with the URL to that article.\\
+{\bf 3.} User clicks the Save Note button, and their Note is saved in local 
+browser storage along with the URL to that article.\\
 {\bf 4.} User wishes to view all previous notes, so they click the MacSidenotes 
 icon followed by the Notes List icon. A list of notes the user has recorded in 
 the past appear, alongside their respective source URLs.\\
 {\bf 5.} User wishes to recall a specific previous note, so they click on that 
 note in the Notes List. Chrome then takes them to the URL associated with that 
-note, displaying the note in the sidebar as it appeared when they saved it.
-
+note, displaying the note in the sidebar as it appeared when they saved it.\\
+\textcolor{blue}{{\bf 6.} User clicks the Delete Note button, followed by the 
+Confirm Delete button, and their Note is removed from local browser storage 
+along with the associated URL.}
 \subsection{Functional Requirements}
 \begin{framed}
 	
@@ -215,7 +225,9 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\textbf{Originator:} Josh Mitchell \\
 	\\
 	\textbf{Fit Criterion:} The window shall appear in the correct location 
-	within 1 second of the user clicking on the icon. \\
+	\sout{within 1 second of the user clicking on the icon.} \textcolor{blue}{ 
+	soon enough from the click so as to not disrupt the user's 
+	flow.} \\
 	
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
@@ -242,7 +254,9 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\textbf{Originator:} Josh Mitchell \\
 	\\
 	\textbf{Fit Criterion:} The user's exact keyboard input shall appear in the 
-	sidebar within 0.1 seconds of the key being pressed. \\
+	sidebar \sout{within 0.1 seconds of the key being pressed} 
+	\textcolor{blue}{ soon enough from the key being pressed so as to not 
+	disrupt the user's flow.} \\
 	
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 
@@ -273,7 +287,9 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Fit Criterion:} After pressing save, Chrome's local storage should 
 	append the exact content of the user's note and its associated URL to the 
-	list of saved notes. This operation will take under 5 seconds to complete. 
+	list of saved notes. This operation will \sout{take under 5 seconds to 
+	complete. } \textcolor{blue}{be fast enough so as to 
+		not disrupt the user's flow.}
 	\\
 	
 	\begin{tabular}{ll}
@@ -295,7 +311,8 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 		\end{tabular} \\
 	\end{center}
 	\textbf{Description:} The product must allow the user to see all previously 
-	saved notes by clicking the Notes List button.\\
+	saved notes by clicking the \sout{Notes} \textcolor{blue}{Show} List 
+	button.\\
 	\\
 	\textbf{Rationale:} Viewing previous notes greatly increases the 
 	extension's usefulness \\
@@ -303,7 +320,8 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\textbf{Originator:} Josh Mitchell \\
 	\\
 	\textbf{Fit Criterion:} The list of notes shall appear in the correct 
-	location within 1 second of the user clicking on the icon. \\
+	location \sout{within 1 second of the user clicking on the icon.} 
+	\textcolor{blue}{quick enough so as to not disrupt the user's flow.} \\
 	
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 4 & \textbf{Customer Dissatisfaction:} 
@@ -331,8 +349,9 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Originator:} Josh Mitchell \\
 	\\
-	\textbf{Fit Criterion:} The HTTP request must be sent within 1 second of 
-	the user clicking the note. \\
+	\textbf{Fit Criterion:} The HTTP request must be sent \sout{within 1 second 
+	of the user clicking the note.} \textcolor{blue}{quick enough so as to not 
+	disrupt the user's flow.} \\
 	
 	\begin{tabular}{ll}
 		\textbf{Customer Satisfaction:} 3 & \textbf{Customer Dissatisfaction:} 
@@ -342,6 +361,44 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Supporting Materials:} None \\
 	\textbf{History:} Created October 6th, 2016
+	
+\end{framed}
+
+\begin{framed}
+	
+	\begin{center}
+		
+		\begin{tabular}{ l c r }
+			\textcolor{blue}{Requirement \#: F.6} & 
+			\textcolor{blue}{Requirement Type: 9} & \textcolor{blue}{Event/Use 
+			case \#: 6}\\
+		\end{tabular} \\
+	\end{center}
+	\textcolor{blue}{\textbf{Description:} Upon the Delete Note button being 
+	clicked, the product must remove the user's note from local browser 
+	storage.\\
+	\\
+	\textbf{Rationale:} Removing unwanted Notes greatly increases the 
+	usefulness of the extension. \\
+	\\
+	\textbf{Originator:} Josh Mitchell \\
+	\\
+	\textbf{Fit Criterion:} After pressing Delete, Chrome's local storage 
+	should remove the exact content of the user's note and its associated URL 
+	from the list of saved notes. This operation will be fast enough so as to 
+	not disrupt the user's flow.}
+	\\
+	
+	\begin{tabular}{ll}
+		\textcolor{blue}{\textbf{Customer Satisfaction:} 4 }& 
+		\textcolor{blue}{\textbf{Customer Dissatisfaction:} 
+		4 }\\
+		\textcolor{blue}{\textbf{Priority:} High} & 
+		\textcolor{blue}{\textbf{Conflicts:} None}\\
+	\end{tabular} \\
+	\\
+	\textcolor{blue}{\textbf{Supporting Materials:} None \\
+	\textbf{History:} Created Dec 7th, 2016}
 	
 \end{framed}
 
@@ -366,8 +423,8 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Originator:} Matthew Shortt \\
 	\\
-	\textbf{Fit Criterion:} When opened sidebar should take up 30 or less percent of the 
-	browsing window size.   
+	\textbf{Fit Criterion:} Should match or surpass stakeholder expectation for 
+	appearance.   
 	\\
 
 	\begin{tabular}{ll}
@@ -396,7 +453,8 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Originator:} Matthew Shortt \\
 	\\
-	\textbf{Fit Criterion:} Should match or surpass stakeholder expectation for appearance.  
+	\textbf{Fit Criterion:} When opened sidebar should take up SIDEBAR\_WIDTH 
+	or less of the browsing window size.
 	\\
 	
 	\begin{tabular}{ll}
@@ -516,8 +574,10 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 	\\
 	\textbf{Originator:} Matthew Shortt \\
 	\\
-	\textbf{Fit Criterion:} The extension shall respond in less than 0.1 seconds in most 
-	cases. No response shall take longer than 2 seconds. 
+	\textbf{Fit Criterion:} The extension shall respond \sout{in less than 0.1 
+	seconds in most cases. No response shall take longer than 2 seconds. } 
+	\textcolor{blue}{fast enough so as to not disrupt the user's natural flow 
+	through using the system.}
 	\\
 	
 	\begin{tabular}{ll}
@@ -601,14 +661,16 @@ note, displaying the note in the sidebar as it appeared when they saved it.
 			Requirement \#: NF.9 & Requirement Type: 10 & Event/Use case \#: \\
 		\end{tabular} \\
 	\end{center}
-	\textbf{Description:} The product should be able to be put on the Google PlayStore.\\
+	\textbf{Description:} The product should be able to be put on the Google 
+	Web Store.\\
 	\\
 	\textbf{Rationale:} Any person with Chrome would be able to install the extension.  \\
 	\\
 	\textbf{Originator:} Matthew Shortt \\
 	\\
-	\textbf{Fit Criterion:} The extension will be downloadable from the store and work on 
-	the computer.  
+	\textbf{Fit Criterion:} \sout{The extension will be downloadable from the 
+	store and work on the computer. } \textcolor{blue}{The extension will be in 
+	the correct format to be loaded into the Chrome Web Store.}
 	\\
 	
 	\begin{tabular}{ll}
@@ -855,10 +917,15 @@ It is not yet known if our inexperience with JavaScript will be a significant hu
 		\begin{tabularx}{\textwidth}{R|R}
 			{\bf Documentation} & {\bf Purpose} \\
 			\hline
-			Chrome Web Store Overview & To describe the extension's features to potential users \\
-			How To Use Button & To introduce new users to the functionality of MacSidenotes. It lists the steps required to create, save and recall notes.\\
+			\sout{Chrome Web Store Overview} & \sout{To describe the 
+			extension's features to potential users} \\
+			\sout{How To Use Button} & \sout{To introduce new users to the 
+			functionality of MacSidenotes. It lists the steps required to 
+			create, save and recall notes.}\\
 		\end{tabularx}
-		
+		\textcolor{blue}{A How to Use Button no longer aligns with the design 
+		philosophy of this project. A strong emphasis has been placed on 
+		intuitiveness and an easy to learn UI, making such a button irrelevant.}
 	\end{table}
 \subsubsection{Training Requirements}
 	MacSidenotes requires no training to be used.
@@ -870,19 +937,36 @@ It is not yet known if our inexperience with JavaScript will be a significant hu
 	None at this time.
 \bibliographystyle{plainnat}
 
-\bibliography{SRS}
+%\bibliography{SRS}
 
 \newpage
 
 \section{Appendix}
 
-This section has been added to the Volere template.  This is where you can place
-additional information.
+\sout{This section has been added to the Volere template.  This is where you 
+can place additional information.}
 
 \subsection{Symbolic Parameters}
 
-The definition of the requirements will likely call for SYMBOLIC\_CONSTANTS.
+The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
+
+\begin{table}[!htbp]
+	\caption{\textbf{Table of Symbolic Parameters}} \label{Table}
+	
+	\begin{tabularx}{\textwidth}{p{5cm}X}
+		\toprule
+		\textcolor{blue}{\textbf{Symbolic Constants}} & 
+		\textcolor{blue}{\textbf{Value}}\\
+		\midrule
+		\textcolor{blue}{SIDEBAR\_WIDTH }& \textcolor{blue}{The maximum width 
+		that the Sidebar 
+		should be upon first opened. The maximum sidebar width is 30\% of a 
+		users full browser size.}\\
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}	
 
 
 \end{document}
