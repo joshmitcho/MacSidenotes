@@ -1,5 +1,7 @@
 **MacSidenotes**
 
+*Note: This project was originally created in a gitlab repo, then migrated here. This means the commit history is completely wrong, but everything should still function properly*
+
 MacSidenotes is a Chrome Extension for taking notes on any web site. Your
 notes are linked with the URL and will appear upon your next visit. Works
 offline using your browser’s local storage.
