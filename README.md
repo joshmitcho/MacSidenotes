@@ -7,6 +7,7 @@ notes are linked with the URL and will appear upon your next visit. Works
 offline using your browser’s local storage.
 
 **Installation (Temporary until we put this in the Chrome Web Store):**
+
 1. Download Git Project macsidenotes-master-hashcode.zip	*(hashcode is a long random string)*
 
 2. Extract files to a directory of your choosing
