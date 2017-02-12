@@ -6,7 +6,9 @@ MacSidenotes is a Chrome Extension for taking notes on any web site. Your
 notes are linked with the URL and will appear upon your next visit. Works
 offline using your browser’s local storage.
 
-**Installation (Temporary until we put this in the Chrome Web Store):**
+**[Install from the Chrome Web Store](https://chrome.google.com/webstore/detail/macsidenotes/ghpigpbocdifnobfnndpjgciikjflgnf "Install from the Chrome Web Store")**
+
+**Installation (If you don't want to use the Chrome Web Store):**
 
 1. Download Git Project macsidenotes-master-hashcode.zip	*(hashcode is a long random string)*
 
